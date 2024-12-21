@@ -79,8 +79,8 @@ def generate_srt(segments, output_file, max_words_per_line=None):
   
 
 def transcribe_audio(
-    audio_file="audio.mp3",
-    model="turbo",
+    audio_file,
+    model,
     output_dir=".",
     output_format="srt",
     word_timestamps=True,
