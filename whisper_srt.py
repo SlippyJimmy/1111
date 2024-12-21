@@ -130,7 +130,7 @@ if __name__ == "__main__":
     initial_prompt=None # 初始提示
     no_speech_threshold = 0.6 # 静音阈值
     logprob_threshold = -1.0 # 转录失败阈值。
-    max_words_per_line = 6 # 每行最多的单词数, 如果为 None 则不进行分行
+    max_words_per_line = 12 # 每行最多的单词数, 如果为 None 则不进行分行
     output_format = "srt" # or 'vtt', 'txt', 'json'
     
     
