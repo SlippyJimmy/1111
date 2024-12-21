@@ -95,13 +95,14 @@ def transcribe_audio(
             return
         
         print(f"开始转录音频文件: {audio_file}")
-        result = model.transcribe(
-            audio_file,
-            word_timestamps=word_timestamps,
-            initial_prompt=initial_prompt,
-            no_speech_threshold=no_speech_threshold,
-            logprob_threshold=logprob_threshold
-        )
+        with tqdm(total=100, desc="转录进度") as pbar:
+            result = model.transcribe(
+                audio_file,
+                word_timestamps=word_timestamps,
+                initial_prompt=initial_prompt,
+                no_speech_threshold=no_speech_threshold,
+                logprob_threshold=logprob_threshold
+            )
 
         if result:
             # 提取音频文件名，作为输出文件名
