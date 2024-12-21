@@ -95,10 +95,8 @@ def transcribe_audio(
             return
         
         print(f"开始转录音频文件: {audio_file}")
-        language = "en" if model.name.endswith(".en") else None
         result = model.transcribe(
             audio_file,
-            language=language,
             word_timestamps=word_timestamps,
             initial_prompt=initial_prompt,
             no_speech_threshold=no_speech_threshold,
