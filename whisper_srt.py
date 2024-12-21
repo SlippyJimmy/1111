@@ -3,6 +3,7 @@ import os
 import re
 import torch
 from whisper.utils import get_writer
+from tqdm import tqdm
 
 def load_whisper_model(model_name="base", model_dir=None, device="cuda" if torch.cuda.is_available() else "cpu"):
     """加载 Whisper 模型."""
