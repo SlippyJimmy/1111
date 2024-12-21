@@ -1,0 +1,4340 @@
+1
+00:00:00,000 --> 00:00:05,940
+Hey guys, this is Mitch with Fineboy CGI and today we're going to continue our Nakama tutorial
+
+2
+00:00:05,940 --> 00:00:13,460
+series where I take you from zero to understanding all the fundamentals of Nakama and in this video
+
+3
+00:00:13,460 --> 00:00:18,560
+we're going to talk about how to do groups so that's going to allow you to add users to like a guild
+
+4
+00:00:18,560 --> 00:00:24,100
+or like a group setting then we're going to talk about doing chats and chatting between each other
+
+5
+00:00:24,100 --> 00:00:30,680
+so sending messages to each other and finally due to popular requests I'm going to talk about how to
+
+6
+00:00:30,680 --> 00:00:36,920
+host your Nakama instance out on the internet so that you can play games with your friends or of
+
+7
+00:00:36,920 --> 00:00:42,480
+course you can release your game out to make it into a multiplayer game so that's what I have in
+
+8
+00:00:42,480 --> 00:00:49,780
+store for you guys today so let's go ahead and get started all right so this tutorial assumes that
+
+9
+00:00:49,780 --> 00:00:55,420
+you already completed the previous tutorial where we actually integrated Nakama for the most part so
+
+10
+00:00:55,420 --> 00:01:00,900
+this one's going to be going over more of the features and things like that that are available to
+
+11
+00:01:00,900 --> 00:01:05,600
+you so let's go ahead and get started with that and the first thing we're going to talk about is
+
+12
+00:01:05,600 --> 00:01:14,040
+creating groups so groups are basically like a guild or a team of people that want to play with each
+
+13
+00:01:14,040 --> 00:01:20,200
+other multiple times not necessarily as a party but as an actual group so after the game is ended
+
+14
+00:01:20,200 --> 00:01:25,660
+and everything is done you still have access to that group of people so the first thing that I'm
+
+15
+00:01:25,660 --> 00:01:29,980
+going to do is I'm going to come in here and I'm going to hide our friends section because we're
+
+16
+00:01:29,980 --> 00:01:34,020
+actually running out of space here and I really should name all of these but that's probably going
+
+17
+00:01:34,020 --> 00:01:39,140
+to break all of my code so we'll go ahead and just hide that panel go ahead and add in a new panel
+
+18
+00:01:40,440 --> 00:01:47,240
+like so I'm going to go over here make it about this big give or take I'm going to right click add a
+
+19
+00:01:47,240 --> 00:01:56,600
+child node we'll add in a label like that we're going to make it about this big and we'll have a
+
+20
+00:01:57,260 --> 00:02:03,420
+name parameter there we'll go ahead and duplicate it and say description
+
+21
+00:02:07,440 --> 00:02:14,500
+and then we'll come in here right click add in a child node and we'll add in a line edit like so and
+
+22
+00:02:14,500 --> 00:02:20,360
+we'll make it about this big give or take we'll control duplicate that and we'll make it about this
+
+23
+00:02:20,360 --> 00:02:26,280
+big I mean technically the description should be a little bit longer but that's okay we'll make it
+
+24
+00:02:26,280 --> 00:02:32,240
+work for what we're gonna do so that's fine and I'll just kind of organize this properly then we'll
+
+25
+00:02:32,240 --> 00:02:37,420
+add in a button and this button is going to allow us to create a group now I'm going to need
+
+26
+00:02:37,420 --> 00:02:45,940
+multiple buttons but for right now we'll just do one I think so we'll go ahead and say create group
+
+27
+00:02:45,940 --> 00:02:50,960
+like so and I'll probably need to make this panel larger to be honest I'm running out of space here
+
+28
+00:02:50,960 --> 00:02:57,200
+so we'll go ahead and just make this a touch bit bigger like so now when we want to create a group
+
+29
+00:02:57,200 --> 00:03:04,020
+all we have to do is if we grab this button name it create group like so we'll go into our node
+
+30
+00:03:04,020 --> 00:03:10,160
+button down and we'll hook that to our control node just like that now you'll see when I hook it to
+
+31
+00:03:10,160 --> 00:03:17,760
+the control node it should create a
+
+32
+00:03:17,760 --> 00:03:24,900
+create group button down function it looks like I already did this in a previous section so I'm
+
+33
+00:03:24,900 --> 00:03:29,700
+going to go ahead and get rid of that that's my fault that caught me off guard real quick but to
+
+34
+00:03:29,700 --> 00:03:38,860
+create a group all we have to do is say client dot create group async and then we can pass in our
+
+35
+00:03:38,860 --> 00:03:44,500
+session like so and then we have to pass in a name now the name is whatever the name is that we put
+
+36
+00:03:44,500 --> 00:03:51,880
+as our line edit now if we take a look we have our name right here so we'll say group name and then
+
+37
+00:03:51,880 --> 00:03:59,420
+group description like so and then we'll go back to our script and we'll do dollar sign group name
+
+38
+00:03:59,420 --> 00:04:09,940
+comma or dot text comma dollar sign group description dot text and then you'll see that they have
+
+39
+00:04:09,940 --> 00:04:17,820
+the option for an avatar url now you don't have to supply one but you can and that's really cool
+
+40
+00:04:17,820 --> 00:04:23,760
+because it basically would allow you to have some kind of url for an image that you could load for
+
+41
+00:04:23,760 --> 00:04:28,520
+their group so I'm going to put that as empty comma and then you'll see that they have a language so
+
+42
+00:04:28,520 --> 00:04:35,000
+we'll say their main language is en it doesn't really matter necessarily but it is a thing that
+
+43
+00:04:35,000 --> 00:04:42,520
+exists and actually I need to I'm messing up my little things here we'll put an empty url we'll put
+
+44
+00:04:42,520 --> 00:04:52,980
+a en for the avatar title and then you can choose whether or not it's an open or if it's not so an
+
+45
+00:04:52,980 --> 00:04:59,360
+open means if it's a public group so if people can actually see it and index it for other people so
+
+46
+00:04:59,360 --> 00:05:04,920
+if you say false then it's a private group so if you don't want it to be listable which we'll
+
+47
+00:05:04,920 --> 00:05:10,340
+discuss listing in a little bit but it allows you to basically say is this a listable group so I'm
+
+48
+00:05:10,340 --> 00:05:14,760
+going to say true because it makes sense to have a listable group and then you can have a max number
+
+49
+00:05:14,760 --> 00:05:21,200
+of members now once this is set you cannot change it so make sure you set it to a value that you
+
+50
+00:05:21,200 --> 00:05:28,420
+want so if a guild can only have 64 members then you set it to 64 if it's 100 members then you can
+
+51
+00:05:28,420 --> 00:05:34,700
+set it to 100 so in my case I'm going to say 32 just because 32 is just a good round number now
+
+52
+00:05:34,700 --> 00:05:40,400
+after that there is nothing else that we can do so we'll go ahead and just say 32 now typically this
+
+53
+00:05:40,400 --> 00:05:48,260
+also returns a group api so you could say var group is equal to await client asynchronous and then
+
+54
+00:05:48,260 --> 00:05:54,180
+we can just go ahead and print out that group now you don't have to do this but it is a way to get a
+
+55
+00:05:54,180 --> 00:06:00,160
+hold of that object if that makes sense so if you needed to go ahead and make your group you know
+
+56
+00:06:00,160 --> 00:06:06,780
+visible or not visible or something like that you could do that right here so now if we go ahead and
+
+57
+00:06:06,780 --> 00:06:12,960
+make sure that our nakama instance is running so if I take a look at my containers you can see it is
+
+58
+00:06:12,960 --> 00:06:20,400
+actually running so there we go we'll go ahead and hit play and then we're going to go ahead and
+
+59
+00:06:20,400 --> 00:06:28,780
+submit we're going to connect to our game we're going to call our group test group description this
+
+60
+00:06:28,780 --> 00:06:36,680
+is our test group and we'll click create now you'll see that we have a error group name must be set
+
+61
+00:06:36,680 --> 00:06:45,820
+so I must have messed up on my group name so let's take a look panel five group name oh I made a
+
+62
+00:06:45,820 --> 00:06:52,300
+mistake because this is the original panel I did some recording earlier that um I didn't keep it but
+
+63
+00:06:52,300 --> 00:06:58,620
+I never actually removed that panel so we'll change this to panel six and then we'll go from there
+
+64
+00:06:58,620 --> 00:07:06,280
+so we'll refresh this and try this one more time that's my fault so we'll submit test group this is
+
+65
+00:07:06,280 --> 00:07:13,380
+a test group create group and you'll see that we get a success right there so now I'm going to
+
+66
+00:07:13,380 --> 00:07:19,240
+navigate to one two seven nakama console right here so we'll go to our one two seven seven three
+
+67
+00:07:19,240 --> 00:07:25,480
+five one and then we will connect into our nakama group if we go to groups you will see there is our
+
+68
+00:07:25,480 --> 00:07:30,980
+test group and you can see this is what we have if we take a look at our members you can see that
+
+69
+00:07:30,980 --> 00:07:40,980
+there is a super admin so what in the world is a super admin well a super admin is a person that has
+
+70
+00:07:40,980 --> 00:07:53,620
+full control over that group so this person jj rb v w e x k i is a super admin of that group so what
+
+71
+00:07:53,620 --> 00:08:01,600
+that means is that they have the ability to delete that group and when you are a super admin you
+
+72
+00:08:01,600 --> 00:08:07,820
+have full control over that group there are four different membership states there's super admin
+
+73
+00:08:07,820 --> 00:08:12,840
+which means that you are basically god you can do whatever you want to this group you can delete
+
+74
+00:08:12,840 --> 00:08:18,260
+people you can do whatever you want and basically you can delete the group and that's a big thing
+
+75
+00:08:18,260 --> 00:08:26,900
+admin which allows you to update your group and allow you to accept kick promote delete ban or
+
+76
+00:08:26,900 --> 00:08:32,780
+promote members and then they have members which allows you to actually have a regular group member
+
+77
+00:08:32,780 --> 00:08:37,980
+they don't have the ability to do anything they cannot accept join requests stuff like that and then
+
+78
+00:08:37,980 --> 00:08:43,940
+they have the join request mode which basically is when a user wants to join they need to be
+
+79
+00:08:43,940 --> 00:08:51,120
+accepted so you have to say yes i will accept you as a part of a group and that's how you know the
+
+80
+00:08:51,120 --> 00:08:57,860
+different states if that makes sense so if we go to our user management we look for the jj r person
+
+81
+00:08:57,860 --> 00:09:02,980
+if we go into accounts i have a bunch of usernames here because i've been doing a lot of testing on
+
+82
+00:09:02,980 --> 00:09:14,700
+my end but if i look for jj rb
+
+83
+00:09:14,700 --> 00:09:23,140
+jj rb well that person let me see jj i have 71 accounts so you can see i have a bunch of accounts
+
+84
+00:09:23,140 --> 00:09:28,800
+because i've been doing a lot of testing on my end for my own stuff and nakama is being difficult so
+
+85
+00:09:28,800 --> 00:09:34,040
+let me refresh jj rb well
+
+86
+00:09:34,040 --> 00:09:41,020
+apparently jj doesn't exist within my vast number of people so i'm not sure why it did that but
+
+87
+00:09:41,020 --> 00:09:47,360
+that's okay there's probably a master account that it's using
+
+88
+00:09:50,740 --> 00:09:58,740
+actually it's right here jj rb right here so i'm not sure why it used this specific one unless i
+
+89
+00:09:58,740 --> 00:10:06,980
+logged in and created it with device authentication which is possible but that's okay we'll figure
+
+90
+00:10:06,980 --> 00:10:13,800
+that out in a minute but that's basically how we create a group now you can see we also printed out
+
+91
+00:10:13,800 --> 00:10:20,800
+a group as well so you can see here we have our creator id which is right here the creator id is db
+
+92
+00:10:20,800 --> 00:10:28,520
+so this is the creator id so our creator is jj so we must have logged in with device authentication
+
+93
+00:10:28,520 --> 00:10:36,300
+which means i probably didn't reset my client authentication stuff so let me take a look at that
+
+94
+00:10:36,300 --> 00:10:45,340
+real quick my apologies i may not have reset some of my code so that it worked properly did user
+
+95
+00:10:45,340 --> 00:10:53,320
+authentication instead of our um device authentication so my guess is that's probably what it is so
+
+96
+00:10:53,320 --> 00:10:59,740
+if i go to log in yeah right here i'm doing a unique device id right here and i'm logging in with
+
+97
+00:10:59,740 --> 00:11:05,380
+that socket connection so that's what's going on here so what i'm gonna do is i'm gonna control k to
+
+98
+00:11:05,380 --> 00:11:13,200
+comment that out and i'm going to go ahead and log in with my username so now i'm gonna go in here
+
+99
+00:11:13,200 --> 00:11:21,840
+and i'll reset this because it's going to be kind of difficult to have a group that uh exists that's
+
+100
+00:11:21,840 --> 00:11:26,700
+not tied to an actual user so i'll go ahead and do that i'll refresh and then we're going to
+
+101
+00:11:26,700 --> 00:11:34,860
+recreate that group just because it makes more sense so i'll say test group description this is a
+
+102
+00:11:34,860 --> 00:11:40,600
+test group and we'll go ahead and create that group now if we take a look at our nakama console you
+
+103
+00:11:40,600 --> 00:11:47,220
+will see that because this was created by test that person is the super admin so whoever creates the
+
+104
+00:11:47,220 --> 00:11:54,180
+group gets super admin status now in order to add users it's actually relatively easy all we need to
+
+105
+00:11:54,180 --> 00:12:02,220
+do is go in to our project here and you can see right here we have the ability to create a group so
+
+106
+00:12:02,220 --> 00:12:08,060
+we'll just go ahead and duplicate this and we will come down here and we'll right click disconnect
+
+107
+00:12:08,060 --> 00:12:20,080
+we're going to go in here connect and say on add user we'll say add underscore user underscore to
+
+108
+00:12:20,080 --> 00:12:26,740
+group like so button down and we'll go ahead and connect that and i'm going to rename this to add
+
+109
+00:12:26,740 --> 00:12:35,160
+user to group so with this for us to be able to add users to group it's actually really easy all we
+
+110
+00:12:35,160 --> 00:12:46,520
+need to do is pass in the group id that we want to add ourselves to so unfortunately we have to
+
+111
+00:12:46,520 --> 00:12:52,100
+actually pull that user identifier so if you look at this you can see inside of our groups we have a
+
+112
+00:12:52,100 --> 00:12:59,220
+user id right here this is the identifier that we need to give them to be able to add ourselves to
+
+113
+00:12:59,220 --> 00:13:06,340
+that group so if we come in here and copy this we can come down here go back into godot and then
+
+114
+00:13:06,340 --> 00:13:16,900
+basically just say await client dot join group async and then do session comma and then we'll just
+
+115
+00:13:16,900 --> 00:13:24,700
+pass in that group identifier now if we come in here and we hit play you'll see in a second we'll go
+
+116
+00:13:24,700 --> 00:13:31,320
+ahead and log in as test 2 we will type test i mean it doesn't really matter and you can see the
+
+117
+00:13:31,320 --> 00:13:37,200
+text here is wrong but that's okay we'll click create group which is technically add group and
+
+118
+00:13:37,200 --> 00:13:44,800
+you'll see that we get an authorization token right here we got a 404 group not found so my guess is
+
+119
+00:13:44,800 --> 00:13:53,560
+that i have the wrong identifier go to group group id i do so we'll go ahead and copy that and we'll
+
+120
+00:13:53,560 --> 00:14:03,060
+go back here we'll change this guy like so paste control s and the nice thing about godot is that if
+
+121
+00:14:03,060 --> 00:14:09,060
+you uh just change the code in here you can just click that and you can see that it should work and
+
+122
+00:14:09,060 --> 00:14:15,360
+that's because godot is a non-compiled language so you can actually get away with changing it and re
+
+123
+00:14:15,360 --> 00:14:20,460
+-executing the code so now if you look at members you can see test 2 is now a member now you might
+
+124
+00:14:20,460 --> 00:14:27,800
+be wondering okay so anybody can join my group yes anyone can join your group as long as long as it
+
+125
+00:14:27,800 --> 00:14:37,740
+is public if it's not public then you have to be approved so that's where the difference comes in so
+
+126
+00:14:37,740 --> 00:14:47,620
+if i come in here i remove test 2 i go to details and i change this to not open and i save it now if
+
+127
+00:14:47,620 --> 00:14:54,620
+i go ahead and i hit create group or i guess connect to the group you can see that there is a join
+
+128
+00:14:54,620 --> 00:15:02,260
+request and that means that i have to approve that before they can be a part of the group so the
+
+129
+00:15:02,260 --> 00:15:09,520
+question is how do you actually accept that join request well to accept a join request what you need
+
+130
+00:15:09,520 --> 00:15:16,820
+to do is you need to come in here and actually code out a small subroutine first thing first i'm
+
+131
+00:15:16,820 --> 00:15:24,520
+going to come in here and change this to add join group like that and then i'm going to go ahead and
+
+132
+00:15:24,520 --> 00:15:38,300
+duplicate this guy drag this guy down like so and i'm going to say add user to group like so and if
+
+133
+00:15:38,300 --> 00:15:44,120
+i just hit enter that will help with formatting this button a little bit better now we'll pull this
+
+134
+00:15:44,120 --> 00:15:51,100
+name parameter to allow ourselves to actually you know go from there and this should probably be
+
+135
+00:15:51,100 --> 00:15:58,200
+called join group so it'll be fine i guess for now but it's just something i'm not a huge fan of but
+
+136
+00:15:58,200 --> 00:16:04,620
+that's okay so we'll go ahead and click node right click disconnect connect and then we'll go ahead
+
+137
+00:16:04,620 --> 00:16:12,520
+and create that little function there now to accept a join request you need to be able to list your
+
+138
+00:16:12,520 --> 00:16:18,380
+groups or your users inside of that group and that's really easy to do we can basically just say var
+
+139
+00:16:18,380 --> 00:16:31,220
+users is equal to await client dot list group users async like that we can pass in our session token
+
+140
+00:16:31,220 --> 00:16:37,680
+and then we can pass in our group id now our group id is right here so we'll go ahead and copy that
+
+141
+00:16:37,680 --> 00:16:44,280
+and paste it and then we'll hit comma and then we can actually have a different state so this is
+
+142
+00:16:44,280 --> 00:16:51,060
+where that one two i guess zero one two and three is useful if you wanted to you could list everyone
+
+143
+00:16:51,060 --> 00:16:56,700
+that is a member of the group everyone that's waiting to join the group and anybody that's a super
+
+144
+00:16:56,700 --> 00:17:03,920
+user or an admin just by changing this from zero through three in our case we're going to be
+
+145
+00:17:03,920 --> 00:17:09,800
+grabbing all the people that are awaiting for their joins you can see the state is three so we will
+
+146
+00:17:09,800 --> 00:17:20,980
+go ahead and do that and then all we need to do is come in here and say for user in users dot group
+
+147
+00:17:20,980 --> 00:17:37,340
+underscore users colon var you is equal to user dot user and then await client dot add group users
+
+148
+00:17:37,340 --> 00:17:45,960
+async pass in our session right here comma what our group id is which in this case is this guy right
+
+149
+00:17:45,960 --> 00:17:53,040
+here so we'll pass that guy in comma and then we'll pass in you and now we'll go ahead and add that
+
+150
+00:17:53,040 --> 00:18:04,260
+person so now if i refresh and i go add user to group so if i submit i log in as the test user and i
+
+151
+00:18:04,260 --> 00:18:12,280
+click add user to group you'll see that we got an error here unable to convert uh argument three to
+
+152
+00:18:12,280 --> 00:18:19,000
+pack string array so u is not correct so let's take a look at what u is real quick i don't think
+
+153
+00:18:19,000 --> 00:18:25,860
+there's really an easy way to handle this without going bracket bracket and then passing in dot id
+
+154
+00:18:25,860 --> 00:18:33,280
+and then just using their id i think that that will work it's not the most ideal way to fix it but
+
+155
+00:18:33,280 --> 00:18:40,280
+if i log in i hit add user you should see a nice request here and then we'll go ahead and refresh
+
+156
+00:18:40,280 --> 00:18:46,940
+this and you can see that they are now a member and that's because when we built the group we made
+
+157
+00:18:46,940 --> 00:18:54,240
+it a private group now you might be wondering is there a way for us to make a group private or
+
+158
+00:18:54,240 --> 00:19:00,320
+public through code right so that way it doesn't have to happen immediately on start and the answer
+
+159
+00:19:00,320 --> 00:19:07,980
+to your question is yes you can actually do that pretty easily all you need to do is come in here go
+
+160
+00:19:07,980 --> 00:19:14,040
+in here let's grab this make it slightly bigger again the group section is going to be very large
+
+161
+00:19:14,040 --> 00:19:22,740
+for this so we'll add in a check box here like so and we'll call it open like that and then we're
+
+162
+00:19:22,740 --> 00:19:29,160
+going to add in a toggle switch so i'll just put this right here for right now we'll call it open
+
+163
+00:19:29,160 --> 00:19:38,240
+that's fine and then we'll go ahead and say on button down or i guess on toggled we'll toggle this
+
+164
+00:19:38,240 --> 00:19:45,760
+on our control node and basically when it gets toggled it'll show you yes or no so we'll say await
+
+165
+00:19:45,760 --> 00:19:56,860
+client dot update group asynchronously we'll pass in our session token comma our group id which is
+
+166
+00:19:56,860 --> 00:20:05,460
+this guy right here and we'll talk about how to get that group id uh through code in a second comma
+
+167
+00:20:05,460 --> 00:20:12,360
+and then the name of the group which i'll pass in null because i don't want to change it and then
+
+168
+00:20:12,360 --> 00:20:21,720
+we'll pass in toggled underscore on like that and you'll see that if i come in here and i submit and
+
+169
+00:20:21,720 --> 00:20:28,640
+then i click open you'll see if we refresh our nakama instance here so we'll refresh this page
+
+170
+00:20:28,640 --> 00:20:39,280
+you'll see it's not open if we close it it should hopefully do it real quick maybe not let's take a
+
+171
+00:20:39,280 --> 00:20:46,380
+look let's do a break point here i could just be crazy so if i come in here toggle response code 400
+
+172
+00:20:46,380 --> 00:20:57,980
+specify at least one field to update okay let's see if we come in here comma p name p description
+
+173
+00:20:57,980 --> 00:21:11,760
+variant null so null comma description null comma avatar null comma language tag en comma now this
+
+174
+00:21:11,760 --> 00:21:17,620
+is how you update any of your parameters by the way so now we have our p open i think that's why
+
+175
+00:21:17,620 --> 00:21:27,020
+toggled on and you can see here we have null null null so this is the username right the name of the
+
+176
+00:21:27,020 --> 00:21:34,060
+group the description of the group and the whether or not it's open or not so you can actually
+
+177
+00:21:34,060 --> 00:21:40,980
+really play around here and update any of these values so now if we hit play in theory it should
+
+178
+00:21:40,980 --> 00:21:48,700
+just work so we'll come in here submit we do that and then we take a look at our group here we
+
+179
+00:21:48,700 --> 00:21:56,100
+refresh you'll see that open is now on if we set it to off and we refresh you'll see that it is now
+
+180
+00:21:56,100 --> 00:22:01,220
+closed so that's how you can open and close and that's really how you can update any of these values
+
+181
+00:22:01,220 --> 00:22:10,540
+so if i came in here if i come back to godot here and i grab my description i believe that's name
+
+182
+00:22:10,540 --> 00:22:20,500
+description avatar url so if i name this the strong gamers and then i change the description to we
+
+183
+00:22:20,500 --> 00:22:33,900
+are the strong gamers exclamation point if i come in here and i hit this little toggle here well our
+
+184
+00:22:33,900 --> 00:22:42,100
+session got dc'd so let me refresh this guy real quick let me re-log in and then i'll change it so
+
+185
+00:22:42,100 --> 00:22:47,580
+now it's going to be open and the titles and everything has been changed strong gamers we are the
+
+186
+00:22:47,580 --> 00:22:53,620
+strong gamers so that's how you can update those values now again typically you wouldn't use a
+
+187
+00:22:53,620 --> 00:22:58,100
+toggle switch to do this i'm just showing you guys how to do that so i can show you the open and
+
+188
+00:22:58,100 --> 00:23:04,000
+close really quickly you can see now it's closed so that's how you can update that group visibility
+
+189
+00:23:04,000 --> 00:23:12,360
+that's how you can update the group values information values for your group now something else
+
+190
+00:23:12,360 --> 00:23:23,840
+that's pretty big and pretty important to know is how to actually list groups so nakama groups are a
+
+191
+00:23:23,840 --> 00:23:30,680
+resource like anything else right so you can actually list them and index them and pull back
+
+192
+00:23:30,680 --> 00:23:38,740
+information using them so what does that mean well that means that you can use what's called list
+
+193
+00:23:38,740 --> 00:23:45,400
+groups asynchronously to actually list out your groups so if i come in here i can show you guys how
+
+194
+00:23:45,400 --> 00:23:55,340
+that works so i'm going to right click add in a panel like so i'll drag this guy over here like this
+
+195
+00:23:55,340 --> 00:24:03,980
+and i will make an h box container or i guess it'd be a v box container like so and i'll make that
+
+196
+00:24:03,980 --> 00:24:09,060
+full rect so that way it maximizes the full screen now granted that being said we only have one
+
+197
+00:24:09,060 --> 00:24:15,280
+group right now so we kind of need to make multiple groups for us to be able to see them all but we
+
+198
+00:24:15,280 --> 00:24:21,340
+can at least show how that works so if we come in here i grab this add user to group button i
+
+199
+00:24:21,340 --> 00:24:29,320
+duplicate it bring it down here and i type list groups like so and then i'm going to grab this
+
+200
+00:24:29,320 --> 00:24:37,600
+description duplicate it pull it down here and this is going to be group
+
+201
+00:24:37,600 --> 00:24:50,980
+query like so i'll change this to list groups and i'll change this to group query now what we can do
+
+202
+00:24:50,980 --> 00:24:58,660
+is hit ctrl s we can go into scripting we can grab our list group go to node right click disconnect
+
+203
+00:24:58,660 --> 00:25:07,300
+right click connect and connect it now what we could do when we want to list our groups is we can
+
+204
+00:25:07,300 --> 00:25:14,660
+set up a limit so we can say var limit is equal to let's say 10 now we don't have 10 groups to list
+
+205
+00:25:14,660 --> 00:25:26,180
+but we'll use that as a default value then we'll say var result is equal to await client dot list
+
+206
+00:25:26,180 --> 00:25:32,280
+groups async now you'll need to pass in your session just like usual and then you'll need to pass in
+
+207
+00:25:32,280 --> 00:25:40,260
+some kind of name that you're trying to search up now this is a variant so of course you can you
+
+208
+00:25:40,260 --> 00:25:49,480
+know get back whatever you're looking for so in my case i'm going to hit dollar sign group query dot
+
+209
+00:25:49,480 --> 00:25:54,740
+text and that'll let me have that limit and then we'll pass in our limit which by the way does
+
+210
+00:25:54,740 --> 00:26:03,060
+default to 10. now they have a cursor value and that cursor value allows you to say i want the next
+
+211
+00:26:03,060 --> 00:26:07,980
+10. so think of it kind of like this when you do your query you're going to pull back the first 10
+
+212
+00:26:07,980 --> 00:26:13,080
+but what happens if the person doesn't see the group that they want on the first 10. well that's
+
+213
+00:26:13,080 --> 00:26:18,780
+where the cursor value comes in so you can hit zero make that cursor value of zero language tag will
+
+214
+00:26:18,780 --> 00:26:24,560
+allow you to pick a language in my case i'm going to do en and again you don't have to do that but
+
+215
+00:26:24,560 --> 00:26:29,800
+it's going to filter out any groups that are not english you can see right here language en so
+
+216
+00:26:29,800 --> 00:26:34,040
+that's going to allow you to have that limiting factor right because if they're spanish you don't
+
+217
+00:26:34,040 --> 00:26:39,360
+want to necessarily show them up if they're looking for an english group if they speak english not
+
+218
+00:26:39,360 --> 00:26:47,000
+spanish it's going to be a problem and then you can look up members which allows you to pick members
+
+219
+00:26:47,000 --> 00:26:52,320
+i'm going to pass in null for that and then you could choose whether or not it's an open group or
+
+220
+00:26:52,320 --> 00:26:57,520
+not so a lot of times when you're doing groups you might want to check to see if it's a public group
+
+221
+00:26:57,520 --> 00:27:03,400
+not a private group because sometimes if you have a group like a guild and you don't want people to
+
+222
+00:27:03,400 --> 00:27:11,880
+see your guild you probably should make sure that that is false or true depending on your use case
+
+223
+00:27:11,880 --> 00:27:18,840
+so i'll make it true and that's pretty much everything that you need to know here now with this we
+
+224
+00:27:18,840 --> 00:27:24,700
+should be relatively good to go so now we could basically we'll have our results we can say for
+
+225
+00:27:24,700 --> 00:27:36,100
+group in result dot groups like that and then we can basically come in and print out our groups so
+
+226
+00:27:36,100 --> 00:27:48,580
+you can see that we can go print group dot name like that and from here we should be relatively good
+
+227
+00:27:48,580 --> 00:27:59,360
+to go so now we can hit play we can log in as test we can come in here and say i believe our group
+
+228
+00:27:59,360 --> 00:28:07,620
+name is strong gamers so we can say strong and list groups and it should come back well it's not
+
+229
+00:28:07,620 --> 00:28:16,700
+happy so that's not a good thing our p cursor query parameters strong that's fine nakama serialize
+
+230
+00:28:16,700 --> 00:28:23,920
+escape and not convert argument one from int to string
+
+231
+00:28:29,240 --> 00:28:38,940
+i wonder if it's mad because our cursor is an int i think there's an issue here with how they have
+
+232
+00:28:38,940 --> 00:28:47,440
+their stuff set up so what if we come back here and we do null instead so if we come in here null
+
+233
+00:28:47,440 --> 00:28:56,020
+just to see if that fixes the problem so we'll come in here we'll type strong and it's still mad oh
+
+234
+00:28:56,020 --> 00:29:02,820
+that's because i didn't log in so that's fair that's understandable so we'll log in we will say
+
+235
+00:29:02,820 --> 00:29:10,100
+strong list groups and you can see that we get a 400 the error name filter cannot be combined with
+
+236
+00:29:10,100 --> 00:29:16,400
+any other filter so it looks like according to nakama's documentation you can combine them but i
+
+237
+00:29:16,400 --> 00:29:23,820
+guess you can't inside of here so let's try that and see if that fixes it because according to our
+
+238
+00:29:23,820 --> 00:29:29,480
+documentation you can do this but i guess we can't so let's try that
+
+239
+00:29:32,800 --> 00:29:40,180
+so we'll hit list groups and you will see that we get an authorization bearing right here i don't
+
+240
+00:29:40,180 --> 00:29:46,040
+know if that came back with really anything so let me see what happens if i list groups let's see
+
+241
+00:29:46,040 --> 00:29:51,480
+what our result comes back with after i drop a breakpoint here and it did it came back with nothing
+
+242
+00:29:51,480 --> 00:29:59,640
+so nakama is not doing what i want it to do because of course it's not welcome to programming let's
+
+243
+00:29:59,640 --> 00:30:02,820
+see what happens if i do capital s it's probably capital
+
+244
+00:30:07,160 --> 00:30:15,600
+case sensitive so we'll come in here and we'll take a look at our results still got nothing back so
+
+245
+00:30:15,600 --> 00:30:23,440
+we'll continue through what happens if i do a percent sign and see if that gives us something back
+
+246
+00:30:23,440 --> 00:30:31,020
+now because it might be that it needs to be a query of some description so we can check that out
+
+247
+00:30:31,020 --> 00:30:36,740
+real quick yep it needs to be a query so you can see it pulled back the one that we're looking for
+
+248
+00:30:36,740 --> 00:30:42,040
+so it pulled back our group so when you do a text just be aware of that you're going to need to make
+
+249
+00:30:42,040 --> 00:30:48,380
+it into an actual query instead so you need to add that percent sign at the end so that's just
+
+250
+00:30:48,380 --> 00:30:56,260
+something to keep in mind now you'll see when i hit play it's going to print out strong gamers right
+
+251
+00:30:56,260 --> 00:31:04,000
+there so that's basically how you can list and filter your groups so that allows us to see those
+
+252
+00:31:04,000 --> 00:31:12,960
+groups and hunt down their identifier because if you look you can see when i list the groups you can
+
+253
+00:31:12,960 --> 00:31:21,160
+see when i come in here and i take a look at my results here the group i come back with has their
+
+254
+00:31:21,160 --> 00:31:29,420
+identifier right here so if you know where their um if you know their name you can pull back their
+
+255
+00:31:29,420 --> 00:31:37,160
+id so that's how we would populate all these other values right here is by listing it and then
+
+256
+00:31:37,160 --> 00:31:44,700
+pulling back that group information now since we can pull this information that means that we can
+
+257
+00:31:44,700 --> 00:31:53,880
+actually come in here and use that info on our panels and things like that so what we could do is we
+
+258
+00:31:53,880 --> 00:32:05,440
+could come in here and list out their information and populate it in a vbox container so we could do
+
+259
+00:32:05,440 --> 00:32:19,560
+is we could go var vbox is equal to vbox container dot new like that and then if i need if i do this
+
+260
+00:32:19,560 --> 00:32:27,680
+correctly equals vbox container dot new and then we could come in here and do the same thing but for
+
+261
+00:32:27,680 --> 00:32:39,880
+labels so we can say label so var name label is equal to a label dot new like that and then name
+
+262
+00:32:39,880 --> 00:32:51,480
+label dot text is equal to if we take a look at this right here we can go name so it would be group
+
+263
+00:32:51,480 --> 00:32:56,820
+dot dot let's take a look at this
+
+264
+00:32:59,840 --> 00:33:08,600
+what is result dot groups let's see results dot groups so it's going to come back with this so then
+
+265
+00:33:08,600 --> 00:33:13,580
+it would be dot name like that and then we could say vbox
+
+266
+00:33:16,740 --> 00:33:24,500
+dot add child and then we could add our name label as a part of that child and then we can come in
+
+267
+00:33:24,500 --> 00:33:33,560
+here and say dollar sign vbox and we can find out which panel is ours which arguably we should come
+
+268
+00:33:33,560 --> 00:33:41,940
+up with a better naming convention here but that's fine dot add child and we could add in our vbox
+
+269
+00:33:41,940 --> 00:33:49,600
+right here like that and that would allow us to effectively add it as a child for our project and
+
+270
+00:33:49,600 --> 00:33:54,500
+then if we refresh this in theory providing that this is going to work and i don't know if it's
+
+271
+00:33:54,500 --> 00:33:58,980
+going to work this is kind of me coding this a little bit off the cuff we can hit list groups and
+
+272
+00:33:58,980 --> 00:34:05,120
+you can see that we now have strong gamers there so that's something that we can actually do and
+
+273
+00:34:05,120 --> 00:34:12,840
+pull back their information so that could be really useful for us to set up for like a selection
+
+274
+00:34:12,840 --> 00:34:18,800
+system or something like that and speaking of that what we could do is we could come in here and say
+
+275
+00:34:18,800 --> 00:34:32,180
+var hbox is equal to hbox container dot new like so and then we can do hbox dot let's see if we
+
+276
+00:34:32,180 --> 00:34:40,700
+bring this down here instead of doing vbox dot add we can do hbox and then we could add our vbox
+
+277
+00:34:43,280 --> 00:34:51,720
+dot add child h box like so and then what that means is that we could add in a button and i know
+
+278
+00:34:51,720 --> 00:34:56,640
+this is kind of weird because i'm actually coding a component instead of doing it the other way but
+
+279
+00:34:56,640 --> 00:35:00,780
+one of the big things that people have asked me is if you could actually do it this way and i want
+
+280
+00:35:00,780 --> 00:35:07,000
+to cover that and show you guys yeah you can actually build interface elements inside of code and
+
+281
+00:35:07,000 --> 00:35:14,720
+then actually have it exist so that's kind of what i'm showing here so if we come in here and say h
+
+282
+00:35:14,720 --> 00:35:29,340
+var button is equal to button dot new like so then we can come in here and do button dot text is
+
+283
+00:35:29,340 --> 00:35:40,220
+equal to select group like that and then we can come in here and say h box dot add child button like
+
+284
+00:35:40,220 --> 00:35:46,400
+that and then we can add that h box and that should allow us to have all of that information that we
+
+285
+00:35:46,400 --> 00:35:52,920
+were looking for before right here so if we hit submit list groups you can see we have a button
+
+286
+00:35:52,920 --> 00:36:03,520
+right here so now we can basically connect its on button click right here so you can say button dot
+
+287
+00:36:06,380 --> 00:36:16,140
+button down like that dot dot connect and then we could just say and here we could call out a
+
+288
+00:36:16,140 --> 00:36:24,620
+function so if i come in here and say funk on group select button down and i can pass in the group
+
+289
+00:36:25,300 --> 00:36:34,180
+like that and i could come in here and do dot connect and we could do what's called binding and
+
+290
+00:36:34,180 --> 00:36:42,940
+binding is actually really cool so we can say on group select button like that dot bind and then i
+
+291
+00:36:42,940 --> 00:36:50,180
+can bind to parameters so i can actually come in here and bind group and now if we come in here and
+
+292
+00:36:50,180 --> 00:36:57,220
+we print out that group you'll see providing that we did this correctly and i know that this is like
+
+293
+00:36:57,220 --> 00:37:02,000
+way beyond what the actual tutorial is but i think that this is pretty cool so i figured i would
+
+294
+00:37:02,000 --> 00:37:07,500
+show it off if we do this we can come in here and list our groups and then select a group and you'll
+
+295
+00:37:07,500 --> 00:37:15,020
+see that it passes in that information right there it binds the parameters so you could actually
+
+296
+00:37:15,020 --> 00:37:24,200
+come in here and set a selected group parameter right here and there you go it would actually work
+
+297
+00:37:24,200 --> 00:37:30,900
+so what we could do is we could come in here and say all the way up here set our
+
+298
+00:37:34,940 --> 00:37:42,600
+var var selected group and then we could come down here and just say selected group is equal to
+
+299
+00:37:42,600 --> 00:37:52,240
+group like that and then we could come in here and do i believe it's group dot id so you could come
+
+300
+00:37:52,240 --> 00:37:57,580
+in here and go selected
+
+301
+00:37:57,580 --> 00:38:08,600
+group dot id like that copy this bad boy go like this paste and paste and paste and then you would
+
+302
+00:38:08,600 --> 00:38:15,620
+be able to effectively update the values in there without needing to actually have that data so if i
+
+303
+00:38:15,620 --> 00:38:21,340
+come in here i list my groups well first i need to actually hook up my session really quick so if i
+
+304
+00:38:21,340 --> 00:38:29,240
+submit that there we go i list my groups i select it now i have that selected i can come in here and
+
+305
+00:38:29,240 --> 00:38:36,680
+do a open and you will see that if i come in here and i refresh this you'll see that that worked and
+
+306
+00:38:36,680 --> 00:38:44,660
+that's because we bound that parameter right here well if i could find it right here to actually
+
+307
+00:38:44,660 --> 00:38:51,600
+work so that's a way that we can go about making a group selection system relatively simple and
+
+308
+00:38:51,600 --> 00:38:58,200
+that's how we can actually list our groups as well so i know that that's kind of a complicated way
+
+309
+00:38:58,200 --> 00:39:03,760
+to show it but i figured that it was an interesting way to approach it and i figured you guys would
+
+310
+00:39:03,760 --> 00:39:11,660
+appreciate that so now the question is what if we want to promote a user or maybe demote a user or
+
+311
+00:39:11,660 --> 00:39:19,240
+kick or ban a user from our group well in order to do that first we need to actually get the user id
+
+312
+00:39:19,240 --> 00:39:24,620
+of that person so you can see here this person is a member and we want to get that user id back so
+
+313
+00:39:24,620 --> 00:39:34,760
+if we come back to godot here and we go ahead and come down here we need to basically get a user
+
+314
+00:39:34,760 --> 00:39:41,540
+name go and fetch their id and then basically promote or demote that person so what i'm going to do
+
+315
+00:39:41,540 --> 00:39:47,220
+is i'm going to right click my panel i'm going to add in a line edit like so i'm going to drag this
+
+316
+00:39:47,220 --> 00:39:52,480
+guy down here we'll go like this make it about i don't know about that big we'll come in here we'll
+
+317
+00:39:52,480 --> 00:40:02,360
+say user user to manage we'll say and then we'll come in here and hopefully we won't run out of
+
+318
+00:40:02,360 --> 00:40:07,360
+space if we do we'll figure something out but let's right click add in a child node let's add in a
+
+319
+00:40:07,360 --> 00:40:18,940
+button we'll add in a button for promoting right here like so and if i think about it for a second
+
+320
+00:40:18,940 --> 00:40:26,760
+with groups we need to promote demote kick and ban somebody and then also leave that group so we'll
+
+321
+00:40:26,760 --> 00:40:31,820
+need to figure out a way to give ourselves a little bit more space here because i'm running out so
+
+322
+00:40:31,820 --> 00:40:36,480
+maybe i can drag this guy up butt it up a little bit closer drag this guy down give ourselves a
+
+323
+00:40:36,480 --> 00:40:42,520
+little bit more space but we can promote duplicate kick
+
+324
+00:40:49,900 --> 00:41:00,380
+demote and then i believe we would need to ban somebody and then finally the last interaction that
+
+325
+00:41:00,380 --> 00:41:08,300
+we need to do is to actually come in here and leave so we could just come over ah goodness we're
+
+326
+00:41:08,300 --> 00:41:14,120
+running out of space here we have so much functionality here it's actually hard to make the space so
+
+327
+00:41:14,120 --> 00:41:20,140
+we'll drag this guy down a tiny bit maybe give ourselves a bit more space over here drag this guy
+
+328
+00:41:20,140 --> 00:41:32,100
+over like so there we go and we can change this one to leave group like that now when we want to
+
+329
+00:41:32,100 --> 00:41:45,140
+promote a user let's change the name of this to promote user kick user demote user and ban user like
+
+330
+00:41:45,140 --> 00:41:51,540
+that and then leave free so i'm going to go ahead and grab promote user and i'm going to change my
+
+331
+00:41:51,540 --> 00:41:57,160
+line edit to user to manage and then i'll click on promote user we're going to go ahead and connect
+
+332
+00:41:57,160 --> 00:42:05,580
+that to our nakama controller here we'll come down here and we'll basically go ahead and promote a
+
+333
+00:42:05,580 --> 00:42:12,460
+user so first things first we need to actually get our user account now unfortunately you need to
+
+334
+00:42:12,460 --> 00:42:23,660
+actually go and fetch that user account so first we'll say var user is is type nakama api dot api
+
+335
+00:42:27,000 --> 00:42:37,360
+users is equal to await client dot get users async and then we can come in here and go session so we
+
+336
+00:42:37,360 --> 00:42:44,340
+could pass in that session and then we need to pass in ids so when you do this you can pass in ids
+
+337
+00:42:44,340 --> 00:42:52,920
+or usernames in our case we're going to pass in a username but you can pass in their actual um id as
+
+338
+00:42:52,920 --> 00:42:57,700
+well so i'm just going to pass in a blank and then for the username i'll just pass in a single
+
+339
+00:42:57,700 --> 00:43:05,580
+parameter and that's going to be dollar sign user to manage dot text comma and you'll see that they
+
+340
+00:43:05,580 --> 00:43:12,000
+also have a facebook id in this case we'll pass in null we don't really have a facebook id to manage
+
+341
+00:43:12,000 --> 00:43:17,380
+a user but they do separate that out and i'm not really sure why they do that but that's a thing so
+
+342
+00:43:17,380 --> 00:43:26,980
+it's just something to keep in mind now what we can do is say for you in users dot users and that's
+
+343
+00:43:26,980 --> 00:43:34,360
+a really bad way so we'll say result and then we'll just do result dot users that's going to be a
+
+344
+00:43:34,360 --> 00:43:40,660
+little bit better than what we're doing right now now once we do this we have the actual user
+
+345
+00:43:40,660 --> 00:43:46,300
+information so that's how you pull back that user's information so you can actually just do you dot
+
+346
+00:43:46,300 --> 00:43:52,920
+id and that will be their identification right that'll be their actual information so what we can do
+
+347
+00:43:52,920 --> 00:44:02,520
+is we can come in here and promote that user so we'll come in here and say await client dot promote
+
+348
+00:44:02,520 --> 00:44:10,660
+user and group async you can pass in our session token and then we can pass in our group id so in
+
+349
+00:44:10,660 --> 00:44:16,000
+our case that's going to be our selected group dot id comma and i believe it's selected group dot id
+
+350
+00:44:16,000 --> 00:44:22,880
+let me double check really quick because sometimes i forget things it is and then we have to pass in
+
+351
+00:44:22,880 --> 00:44:31,460
+a user identifier so that's going to be u dot id like that and now if we go ahead and hit play
+
+352
+00:44:31,460 --> 00:44:39,520
+you'll see in a second that if i connect to this and then i list my groups i select my group and
+
+353
+00:44:39,520 --> 00:44:49,860
+then i type in test two and i click promote well we have an error so the error is cannot convert
+
+354
+00:44:49,860 --> 00:44:56,220
+argument three from string to a packed array and that's because this can be a group of users it's
+
+355
+00:44:56,220 --> 00:45:02,040
+not actually just one group it's actually multiple people so we can go ahead and do that and then
+
+356
+00:45:02,040 --> 00:45:07,540
+try it again so it's because we need we can actually have multiples of somebody so we'll go like
+
+357
+00:45:07,540 --> 00:45:14,540
+that we'll submit we'll list our groups select group test two we'll promote that person you'll see
+
+358
+00:45:14,540 --> 00:45:18,900
+that that looks like that was successful we'll head back to our nakama console we'll refresh and you
+
+359
+00:45:18,900 --> 00:45:25,300
+will see that this person is now an admin so that's huge because it's going to allow us to be able
+
+360
+00:45:25,300 --> 00:45:31,460
+to create admins and now if we click it a second time you'll see if we refresh they are now a super
+
+361
+00:45:31,460 --> 00:45:38,220
+admin that means that they can delete this group if they want to now the question might be okay so i
+
+362
+00:45:38,220 --> 00:45:46,800
+can promote users how do i demote them right well if we come in here we go in right here we go into
+
+363
+00:45:46,800 --> 00:45:54,600
+demote user button down let's connect that real quick we come in here and basically copy and paste
+
+364
+00:45:54,600 --> 00:46:01,940
+this code so we'll just copy this guy paste it and instead of promote we can just pass in demote
+
+365
+00:46:01,940 --> 00:46:08,060
+easy enough and same thing for kick user right we could just kind of bring that in and let's do ban
+
+366
+00:46:08,060 --> 00:46:15,420
+user as well right so we'll just bring that in as well if we copy this guy we can copy paste and
+
+367
+00:46:15,420 --> 00:46:24,120
+paste because they're all the exact same functionality so we can come in here and say kick group
+
+368
+00:46:24,120 --> 00:46:36,620
+users and then ban group users and now if i refresh this you'll see if i submit list groups select
+
+369
+00:46:36,620 --> 00:46:45,540
+my group test two i go demote you'll see that that worked if we come over here we refresh our users
+
+370
+00:46:45,540 --> 00:46:52,880
+right here you'll see that they are now an admin and then i can go ahead and ban a user and you'll
+
+371
+00:46:52,880 --> 00:47:03,080
+see non-existent function ban groups that's probably my fault group users async and it looks like
+
+372
+00:47:03,080 --> 00:47:09,700
+you actually can't ban a user so we'll remove that that's my fault i um was reading the
+
+373
+00:47:09,700 --> 00:47:14,600
+documentation earlier but it looks like it got removed so you're not actually able to ban a user
+
+374
+00:47:14,600 --> 00:47:23,000
+anymore from a group so we'll come in here we'll go ahead and type submit list our groups select our
+
+375
+00:47:23,000 --> 00:47:30,240
+group we'll go to test two we'll go ahead and demote the user so you'll see if we refresh they are
+
+376
+00:47:30,240 --> 00:47:35,760
+an admin if we come in here we can go ahead and kick them and then if we refresh you will see they
+
+377
+00:47:35,760 --> 00:47:42,600
+have been removed from that group and that's basically how you can actually manage your users in
+
+378
+00:47:42,600 --> 00:47:51,300
+here and you can also delete a group and leave a group so if we want to leave a group we can come in
+
+379
+00:47:51,300 --> 00:47:58,800
+here and go into our stuff here we can click on leave group button down on leave button down we'll
+
+380
+00:47:58,800 --> 00:48:05,740
+connect that and to leave a group it's actually relatively simple all we need to do is type
+
+381
+00:48:08,940 --> 00:48:16,580
+await client dot leave group async we'll pass in our session and then we'll pass in our group id
+
+382
+00:48:16,580 --> 00:48:23,360
+which is going to be our selected group id now this will allow us to leave our group but the problem
+
+383
+00:48:23,360 --> 00:48:30,640
+is that if i leave my group i will actually um not have any more users in that group so what i'll do
+
+384
+00:48:30,640 --> 00:48:40,480
+is i'll log in as test two i will come in here and pass in my group name if i remember correctly
+
+385
+00:48:40,480 --> 00:48:46,700
+it's if we list groups we can select the group join group and then you should see that we will join
+
+386
+00:48:46,700 --> 00:48:55,120
+that group so you'll see as a member we can refresh and there we go we're in that group and now we
+
+387
+00:48:55,120 --> 00:49:02,140
+can come in here and say leave group and then if we refresh we have left that group right there and
+
+388
+00:49:02,140 --> 00:49:08,300
+now we can actually uh safely delete our group right because we now have shown that that section
+
+389
+00:49:08,300 --> 00:49:12,640
+works that's how you leave a group it's actually really easy you just do leave group asynchronously
+
+390
+00:49:12,640 --> 00:49:17,700
+so now what happens if you want to delete a group well we're going to need an additional button for
+
+391
+00:49:17,700 --> 00:49:23,380
+that so let's duplicate our leave group we'll just pull it down here i guess we're kind of running
+
+392
+00:49:23,380 --> 00:49:29,240
+out of space here so i'll just put it right here i'll move open over we'll grab leave group and
+
+393
+00:49:29,240 --> 00:49:35,600
+we'll put delete group now in order to delete a group we'll disconnect this connect in order to
+
+394
+00:49:35,600 --> 00:49:42,120
+delete a group it's actually really simple as well so when you delete a group all you need to do is
+
+395
+00:49:42,120 --> 00:49:53,740
+type client await client dot delete group async and then you can pass in the session and the
+
+396
+00:49:53,740 --> 00:50:01,080
+selected group dot id and that's literally all you need to do so now if i refresh my screen here i
+
+397
+00:50:01,080 --> 00:50:09,360
+log in as test the super admin and then we'll log in as test we'll come in here we'll log in as test
+
+398
+00:50:09,360 --> 00:50:15,240
+two we'll submit we will go ahead and hit list groups we'll select that group we're going to join
+
+399
+00:50:15,240 --> 00:50:21,400
+that group really quick and remember because this is an open group that person should be able to
+
+400
+00:50:21,400 --> 00:50:25,540
+just join there
+
+401
+00:50:25,540 --> 00:50:34,440
+we go so the person has joined and now you'll see if i go in as test two right here and i go ahead
+
+402
+00:50:34,440 --> 00:50:41,840
+and i click delete group which this is leave group but it's delete group in um our code you'll see
+
+403
+00:50:41,840 --> 00:50:48,320
+request has returned spot response 400 group not found or you are not allowed to delete and the
+
+404
+00:50:48,320 --> 00:50:52,940
+reason why is because that person does not have the capability to delete this group you can see it's
+
+405
+00:50:52,940 --> 00:51:01,400
+still here however if i come in here as test or as my super admin and i log in and i click list
+
+406
+00:51:01,400 --> 00:51:07,860
+groups i select my group and then i click delete group you'll see if we go back to groups it has now
+
+407
+00:51:07,860 --> 00:51:12,940
+been removed and that's basically everything that you need to know about groups
+
+408
+00:51:15,540 --> 00:51:21,620
+now when it comes to chats which is actually a whole feature inside of nakama you can actually build
+
+409
+00:51:21,620 --> 00:51:28,240
+chat rooms right inside of nakama so when it comes to chats how do we actually get that to work well
+
+410
+00:51:28,240 --> 00:51:34,340
+first things first we are majorly out of space so i am going to hide the group section as you can
+
+411
+00:51:34,340 --> 00:51:41,980
+see we have all sorts of different areas here where we can actually do our nakama work here so i'm
+
+412
+00:51:41,980 --> 00:51:45,780
+actually just going to come in here and just start hiding a lot of this because we're running out of
+
+413
+00:51:45,780 --> 00:51:55,560
+space here so i'll hide this panel and this panel and there we go so when it comes to chats we have
+
+414
+00:51:55,560 --> 00:52:01,600
+three different types of chats and we'll talk about all three of them and how to send messages and
+
+415
+00:52:01,600 --> 00:52:07,920
+stuff like that but we have three different chat types we have dynamic rooms group chats and direct
+
+416
+00:52:07,920 --> 00:52:15,180
+chats okay and we'll talk about the group chats when we get there but one of the big ones that a lot
+
+417
+00:52:15,180 --> 00:52:25,380
+of people like is the dynamic rooms the dynamic rooms is basically a random room that gets created
+
+418
+00:52:25,380 --> 00:52:31,420
+for temporary for a temporary for a temporary time span and it only stays open as long as there are
+
+419
+00:52:31,420 --> 00:52:37,240
+people in that chat room so the nice thing about it is let's say you have a match or something like
+
+420
+00:52:37,240 --> 00:52:42,880
+that you could put people in that temporary room and then have people communicate and then once the
+
+421
+00:52:42,880 --> 00:52:50,740
+match is over that room just gets dissolved over time whereas something like a group chat that stays
+
+422
+00:52:50,740 --> 00:52:57,120
+for as long as the group exists and then they also have direct chats which is basically one-on-one
+
+423
+00:52:57,120 --> 00:53:03,860
+communications between people which persist once again forever so in order to do dynamic rooms let's
+
+424
+00:53:03,860 --> 00:53:11,020
+first right click add a child node let's add in a panel here and let's make it about this big now
+
+425
+00:53:11,020 --> 00:53:18,180
+we're going to have to build a whole chat system so this will take a little bit of time so what i'm
+
+426
+00:53:18,180 --> 00:53:24,380
+going to do is i'm going to right click add a child node i'm going to add in a button i'm going to
+
+427
+00:53:24,380 --> 00:53:32,200
+right click add a child node add in a line edit right here we're going to make the line edit about
+
+428
+00:53:32,200 --> 00:53:40,900
+yay big give or take if my mouse will let me we'll do that we'll add in a button again providing
+
+429
+00:53:40,900 --> 00:53:46,140
+that i can click on this there we go we'll make it about yay big and for our line edit we'll just
+
+430
+00:53:46,140 --> 00:53:55,880
+say chat name like that and then we'll come in here and say join chat now you could automate this as
+
+431
+00:53:55,880 --> 00:54:04,060
+soon as a person goes into a match you could actually go set up the uh room name and automatically
+
+432
+00:54:04,060 --> 00:54:08,320
+have them join but in this case we're going to manually do it that way you guys get the experience
+
+433
+00:54:08,320 --> 00:54:16,960
+of how it works so what we'll do is we'll change this to join chat room like that and then the line
+
+434
+00:54:16,960 --> 00:54:23,780
+at it will be chat name like that and then i'm going to come in here go over here button down and
+
+435
+00:54:23,780 --> 00:54:30,740
+then i will hit connect now when we want to join a chat room all we have to do is come up with a
+
+436
+00:54:30,740 --> 00:54:39,700
+room name if it's persistent if it's hidden and if it is a room type so i will show you all of those
+
+437
+00:54:39,700 --> 00:54:49,380
+things so first things first let's go var channel is equal to await socket dot join chat
+
+438
+00:54:49,380 --> 00:54:56,200
+asynchronously now what this is going to do is we're going to have a target now that target is what
+
+439
+00:54:56,200 --> 00:55:01,920
+the name of that chat room is going to be in this case we'll just say actually we already have a
+
+440
+00:55:01,920 --> 00:55:10,360
+title right here right so dollar sign chat name dot text comma and then you'll see that we have an
+
+441
+00:55:10,360 --> 00:55:18,360
+int type so what does that actually take what is the type well the type is a nakaba socket chat type
+
+442
+00:55:18,360 --> 00:55:29,540
+or a channel type so we'll say var type is equal to nakaba socket dot channel type dot and you'll
+
+443
+00:55:29,540 --> 00:55:38,340
+see that we have different types direct direct message group and room and each one has a different
+
+444
+00:55:38,340 --> 00:55:48,920
+use so thankfully the code is basically the same but what matters is if it is going to be a room if
+
+445
+00:55:48,920 --> 00:55:53,980
+it's going to be a group or if it's going to be a direct message in our case it's going to be a room
+
+446
+00:55:53,980 --> 00:56:00,800
+so i'm going to come in here and say type comma and then if it's persistent so in our case we don't
+
+447
+00:56:00,800 --> 00:56:05,980
+want it to be persistent so false comma and then if it's hidden it will say false we wanted to make
+
+448
+00:56:05,980 --> 00:56:12,520
+it a public messaging chat so people can actually go in and message each other and not have to
+
+449
+00:56:12,520 --> 00:56:16,800
+authenticate or be added to that chat and then what i'm going to do is i'm going to print that chat
+
+450
+00:56:16,800 --> 00:56:19,780
+information so print channel
+
+451
+00:56:21,300 --> 00:56:28,100
+like that now this will basically print out our chats information so if i refresh this and i run
+
+452
+00:56:28,100 --> 00:56:35,660
+this if i join and i say test and i join you'll see that we now have a chat that is right here you
+
+453
+00:56:35,660 --> 00:56:43,440
+can see it has the id one it has id here it says there's a user test user id is this session id is
+
+454
+00:56:43,440 --> 00:56:49,860
+this so we can get all the people that are inside of that chat right there now if somebody else
+
+455
+00:56:49,860 --> 00:56:57,080
+joins test to submit and then they go test and they join you can see here that we also joined
+
+456
+00:56:57,080 --> 00:57:05,680
+channel id 2 user presence session this status user test so we just got back that user's account
+
+457
+00:57:05,680 --> 00:57:12,180
+information right so we got test and test 2 in this chat with each other and that's basically what
+
+458
+00:57:12,180 --> 00:57:17,440
+these guys are saying here now in order to send a message you need to actually be able to receive
+
+459
+00:57:17,440 --> 00:57:25,360
+that message right so let's go to our script here and let's scroll all the way up to the top and the
+
+460
+00:57:25,360 --> 00:57:30,560
+reason why i'm scrolling all the way up to the top is because we need to subscribe when we create
+
+461
+00:57:30,560 --> 00:57:37,900
+our socket to the ability to actually get messages so what we need to do is go find where our socket
+
+462
+00:57:37,900 --> 00:57:38,600
+gets created
+
+463
+00:57:41,620 --> 00:57:49,560
+which is right here so we'll come in here we'll say socket dot and providing that godot wants to be
+
+464
+00:57:49,560 --> 00:57:59,880
+nice to me it will auto complete please maybe not well we'll hit dot received underscore
+
+465
+00:58:02,220 --> 00:58:11,540
+channel underscore message dot connect like that and then we'll pass in a callable so what this is
+
+466
+00:58:11,540 --> 00:58:16,980
+going to be is it's just going to be a very basic function that prints out that message currently at
+
+467
+00:58:16,980 --> 00:58:24,400
+least so we'll say funk underscore on underscore channel on
+
+468
+00:58:26,340 --> 00:58:26,980
+channel
+
+469
+00:58:29,940 --> 00:58:37,380
+message like that and we'll pass in a message now this could be a type if you want it to be which is
+
+470
+00:58:37,380 --> 00:58:42,060
+going to be a nakama api dot api
+
+471
+00:58:44,300 --> 00:58:53,400
+channel message like that and then we can just go ahead and print that message and there we go now
+
+472
+00:58:53,400 --> 00:58:59,180
+we're going to connect that message so we'll just pass on channel message like that and that will
+
+473
+00:58:59,180 --> 00:59:07,220
+actually pass that to this guy right here and we'll go ahead and send out that signal now when we do
+
+474
+00:59:07,220 --> 00:59:14,980
+our message when we want to send a message we need to actually create a panel for that so let's come
+
+475
+00:59:14,980 --> 00:59:21,540
+in here let's right click our panel and add in another panel like so i'm going to drag this guy over
+
+476
+00:59:21,540 --> 00:59:28,380
+here make it about this big give or take it we're going to create a very basic message block system
+
+477
+00:59:28,380 --> 00:59:34,420
+so it's going to be pretty ugly my apologies but i want to try to get this to work as quickly as
+
+478
+00:59:34,420 --> 00:59:41,840
+humanly possible so what i'm going to do is i'm going to put in a line edit like so i'm going to
+
+479
+00:59:41,840 --> 00:59:48,240
+make this go on the bottom stretched across i'm going to pull this back right click add a child node
+
+480
+00:59:48,240 --> 00:59:54,220
+we'll add in a button i'm going to snap that guy right in the bottom right where we'll make it about
+
+481
+00:59:54,220 --> 01:00:03,000
+if i can click on it about yay big we'll put a send or maybe just like an arrow like that i think
+
+482
+01:00:03,000 --> 01:00:11,180
+that'll work we'll put a placeholder chat text here we'll type this as chat text we'll make the
+
+483
+01:00:11,180 --> 01:00:20,600
+panel title chat and then we'll make the button submit chat like that i'm going to go ahead and
+
+484
+01:00:20,600 --> 01:00:23,680
+right click add any child node and i'm going to add in a
+
+485
+01:00:27,960 --> 01:00:35,820
+i am brain farting on what it is it is a text edit like that we'll make it full screen so full
+
+486
+01:00:35,820 --> 01:00:41,020
+wrecked and we'll make it about yay big that'll go ahead and make it so that it's kind of scalable
+
+487
+01:00:41,020 --> 01:00:49,760
+and you know easy to use now inside of here i'll scroll down and i will do auto wrap that's fine so
+
+488
+01:00:49,760 --> 01:00:55,680
+that means that if i put in a bunch of text here it's going to auto wrap so you can see if i do wrap
+
+489
+01:00:55,680 --> 01:01:03,440
+mode boundary it will go ahead and wrap that and then i will turn on scroll as well so if this
+
+490
+01:01:03,440 --> 01:01:10,500
+continues so we'll ctrl c ctrl v we'll paste it you'll see that it's going to scroll we also want to
+
+491
+01:01:10,500 --> 01:01:17,120
+we'll want to shut off editable and i think that will work because i think this is placeholder text
+
+492
+01:01:17,120 --> 01:01:23,740
+so if i come in here and we paste this text in this will allow us to scroll i'm curious if we can
+
+493
+01:01:23,740 --> 01:01:32,880
+make it follow the uh actual scrolling but i don't think we can i know there's a way to do it it's
+
+494
+01:01:32,880 --> 01:01:38,120
+been a while since i've done it but i think i'll just go ahead and skip that part but there is a way
+
+495
+01:01:38,120 --> 01:01:44,580
+to make it so it automatically scrolls to the bottom but that's okay right now so this is basically
+
+496
+01:01:44,580 --> 01:01:49,160
+what our chat setup is going to be it's going to be relatively simple but it's going to be something
+
+497
+01:01:49,160 --> 01:01:54,920
+that we can at least use now i'm going to grab my submit chat button i'm going to go to node button
+
+498
+01:01:54,920 --> 01:02:04,660
+down i'm going to connect that to my submit chat button now when we want to do a message right we
+
+499
+01:02:04,660 --> 01:02:11,760
+want to send a message we can come in here and say var await
+
+500
+01:02:11,760 --> 01:02:20,320
+socket dot write chat message asynchronous now this is going to require a id so we have to actually
+
+501
+01:02:20,320 --> 01:02:25,300
+have some kind of chat name in this case i'm just going to go ahead and grab this guy right here
+
+502
+01:02:25,300 --> 01:02:31,120
+copy it and paste it it's not the most ideal situation because once you're connected to that channel
+
+503
+01:02:31,120 --> 01:02:36,940
+you should probably just be connected to that channel right instead of passing in this value here
+
+504
+01:02:36,940 --> 01:02:44,480
+but we can basically throw a value up at the top and basically just save it across different
+
+505
+01:02:44,480 --> 01:02:50,100
+functions and that would solve this problem but for right now we'll go ahead and do this and then we
+
+506
+01:02:50,100 --> 01:02:59,400
+need to pass in our message content so what we can do is do dollar sign chat text dot text like that
+
+507
+01:02:59,400 --> 01:03:07,240
+now i think we should probably change this to text edit instead just do chat text box that way we
+
+508
+01:03:07,240 --> 01:03:17,020
+actually have that value now if we hit play and we go ahead and hit play if we come in here we both
+
+509
+01:03:17,020 --> 01:03:27,160
+submit join test test number two submit join test if we send a text test test send you'll see that
+
+510
+01:03:27,160 --> 01:03:33,220
+it is very mad at us cannot convert argument to from string to dictionary so it's going to require a
+
+511
+01:03:33,220 --> 01:03:40,360
+dictionary for us to be able to do that so what we need to do is we need to pass in an actual
+
+512
+01:03:40,360 --> 01:03:50,700
+dictionary of objects so we can come in here pass in this dictionary like so and go quote message
+
+513
+01:03:50,700 --> 01:04:00,360
+colon that and the reason why we have to do this is because we can actually do what's called uh
+
+514
+01:04:00,360 --> 01:04:09,020
+emotes right and emotes are sent via um json data so that's the reason why it requires it to be a
+
+515
+01:04:09,020 --> 01:04:15,180
+dictionary so that we can actually send over emote information now i'm not going to cover that just
+
+516
+01:04:15,180 --> 01:04:20,480
+because uh there's a whole like loading emotes and stuff like that that you need to do and that's
+
+517
+01:04:20,480 --> 01:04:25,980
+way beyond the basics of this tutorial so if you guys want to look at that you guys can go check out
+
+518
+01:04:25,980 --> 01:04:31,320
+their real-time chatting section and they'll go over that but i'll go ahead and hit submit test to
+
+519
+01:04:31,320 --> 01:04:40,860
+submit join test join test test send and you'll see that we actually get an error so it says invalid
+
+520
+01:04:40,860 --> 01:04:51,900
+chat identifier so what's going on here right well if you take a look at your chat here if we take a
+
+521
+01:04:51,900 --> 01:05:01,000
+look at our chat you'll see that our chat actually has an identifier id2 you see that so when you
+
+522
+01:05:01,000 --> 01:05:09,580
+have a chat it actually has an identifier associated with that chat and so you don't want to pass in
+
+523
+01:05:09,580 --> 01:05:15,820
+the title of the chat you want to pass in the identifier you can see that we have a channel right
+
+524
+01:05:15,820 --> 01:05:24,860
+here so if i go channel.id we can go ahead and refresh this guy and go submit test submit and you'll
+
+525
+01:05:24,860 --> 01:05:32,320
+see that we are now printing out and you will see that we have an id right here i added channel id
+
+526
+01:05:32,320 --> 01:05:38,580
+in post so that way it was nice and quick but you can see right here channel id is two dot dot dot
+
+527
+01:05:38,580 --> 01:05:46,780
+test so two is the id of the chat and test is the actual id that we gave it so we need to pass that
+
+528
+01:05:46,780 --> 01:05:53,420
+value in right here for us to be able to send messages so what we can do is we can come in here copy
+
+529
+01:05:53,420 --> 01:06:05,500
+this var channel go all the way up to the top and go var current channel like that and then we go
+
+530
+01:06:05,500 --> 01:06:13,280
+all the way back down to the bottom and do current channel is equal to that and then we'll go ahead
+
+531
+01:06:13,280 --> 01:06:21,440
+and copy this we'll paste it right here dot id and then we can go ahead and do current channel dot
+
+532
+01:06:21,440 --> 01:06:27,500
+id right here as well now what that will do is that it should allow us to actually send it to the
+
+533
+01:06:27,500 --> 01:06:37,040
+proper id so we'll hit submit test to submit test join test join test send and you should see right
+
+534
+01:06:37,040 --> 01:06:45,220
+here we no longer have an error but instead we have an actual message right here i probably should
+
+535
+01:06:45,220 --> 01:06:51,320
+not have used the word test i should probably use this is a test message that way we can actually
+
+536
+01:06:51,320 --> 01:06:57,240
+see what it is and you can see here that i send a message and you see right here channel id test
+
+537
+01:06:57,240 --> 01:07:03,640
+code is zero content message this is a test message and that's basically how we can send and receive
+
+538
+01:07:03,640 --> 01:07:13,620
+messages now the nice thing is that if since we typed our message section and unfortunately this is
+
+539
+01:07:13,620 --> 01:07:20,740
+getting pretty large so i might want to abstract some of this out but if we go to right here where
+
+540
+01:07:20,740 --> 01:07:29,220
+our on channel message is at we have our different messages that we can message information here
+
+541
+01:07:29,220 --> 01:07:35,660
+that we can actually use so if we type message dot you'll see that it's going to automatically give
+
+542
+01:07:35,660 --> 01:07:42,240
+us some information here that we can work with so you can see that we have sender id username all
+
+543
+01:07:42,240 --> 01:07:53,020
+sorts of information so the nice thing is i can come in here and i can go dollar sign chat text box
+
+544
+01:07:53,020 --> 01:08:09,280
+dot text plus equals message dot user name plus colon space plus message dot and then if we take a
+
+545
+01:08:09,280 --> 01:08:22,600
+look there should be a content dot message like that like that and we should probably also go ahead
+
+546
+01:08:22,600 --> 01:08:36,680
+and pass in a new line because we want the user to have a new line here now so let's try this var
+
+547
+01:08:36,680 --> 01:08:47,820
+content is equal to message dot content and then i wonder if content dot message will work instead
+
+548
+01:08:48,760 --> 01:08:54,960
+okay there we go we'll try that and see if that works also i'm going to want to put a new line at
+
+549
+01:08:54,960 --> 01:09:00,700
+the end of this so we'll go ahead and do that slash n for a new line that way every time somebody
+
+550
+01:09:00,700 --> 01:09:06,280
+sends a message it's going to be a new lined message and now if i refresh this in theory this should
+
+551
+01:09:06,280 --> 01:09:17,400
+work so we'll go ahead and do submit test join test to submit test join test send and it is very
+
+552
+01:09:17,400 --> 01:09:24,080
+unhappy so let's take a look you can see the content here is a string data so it looks like we're
+
+553
+01:09:24,080 --> 01:09:31,340
+going to need to json parse this information so we'll go json dot parse string and we'll go ahead
+
+554
+01:09:31,340 --> 01:09:38,540
+and pass that in and there we go and that should fix that problem basically content is a json value
+
+555
+01:09:38,540 --> 01:09:43,560
+so that's something that i didn't think about i'm talking without thinking as i'm doing this
+
+556
+01:09:43,560 --> 01:09:50,160
+tutorial so forgive me but we need to actually parse that data so now if we hit send you'll see test
+
+557
+01:09:50,160 --> 01:10:00,240
+test test this is a test message like so test to this is a test message and that's basically how you
+
+558
+01:10:00,240 --> 01:10:08,100
+could do a very basic communication system so now the question is okay great that's fine but how do
+
+559
+01:10:08,100 --> 01:10:15,240
+i actually do group chats and in order to do group
+
+560
+01:10:15,240 --> 01:10:22,080
+chats what we need to do is we need to come in here and we need to go ahead and grab another join
+
+561
+01:10:22,080 --> 01:10:27,460
+chat here and what i'm going to do is i'm going to unhide my group section and i guess i'll just
+
+562
+01:10:27,460 --> 01:10:34,860
+move it over so we have a little bit more space let's grab this guy we'll drag him over like this
+
+563
+01:10:34,860 --> 01:10:42,280
+it's getting a little on the cramped side with our setup here so i might need to readjust some stuff
+
+564
+01:10:42,280 --> 01:10:49,020
+but i don't think i can fit it really up here so we'll just kind of push it over here and that
+
+565
+01:10:49,020 --> 01:10:53,220
+should just work i mean it's a little tight but it will work for the demonstration we're trying to
+
+566
+01:10:53,220 --> 01:11:00,920
+do here so if i grab this guy here i right click disconnect inspector change this to join a group
+
+567
+01:11:00,920 --> 01:11:11,520
+chat like so when you want to do a group chat all you got to do is come in and basically i move this
+
+568
+01:11:11,520 --> 01:11:17,600
+guy over there we go all you really need to do is you need to come in here connect your button down
+
+569
+01:11:17,600 --> 01:11:23,800
+so go ahead and connect that over here and then we can come in here and basically just grab this
+
+570
+01:11:23,800 --> 01:11:29,500
+exact code right here it's almost a duplication right it's almost exactly the same we'll just drop
+
+571
+01:11:29,500 --> 01:11:40,800
+that guy in there and all we really need to do is come in here and when we do our join socket
+
+572
+01:11:40,800 --> 01:11:46,200
+asynchronously we just basically need to pass in our group id so we'll say and i believe we have a
+
+573
+01:11:46,200 --> 01:11:54,160
+group if i remember correctly so selected group dot id and then we can pass in type for persistence
+
+574
+01:11:54,160 --> 01:12:00,300
+we're going to want to say true because we want to keep that group around right and then we want it
+
+575
+01:12:00,300 --> 01:12:07,720
+to be persistent and we also want to change this to a type group chat and then what we can do is we
+
+576
+01:12:07,720 --> 01:12:17,440
+can come in here hit play come over here submit test we will go ahead and create a group so that way
+
+577
+01:12:17,440 --> 01:12:22,920
+now our group actually exists so if we refresh our groups i'll have to re-log in because this is
+
+578
+01:12:22,920 --> 01:12:28,520
+another recording session and you can see we now have a test group and we are now a part of it now
+
+579
+01:12:28,520 --> 01:12:35,140
+from here we can join that group with test too so we'll come in here and i already did this one so
+
+580
+01:12:35,140 --> 01:12:43,700
+we'll do test to test join group and it got mad at me because our selected group is not correct and
+
+581
+01:12:43,700 --> 01:12:51,460
+that's my fault so that's totally fine so i will have to refresh real quick so we'll say submit test
+
+582
+01:12:51,460 --> 01:12:58,860
+we will go ahead and list our groups we'll select our test group we'll do test to list our groups
+
+583
+01:12:58,860 --> 01:13:05,860
+select it join that group and then when we join our chat we can just join group chat growing group
+
+584
+01:13:05,860 --> 01:13:12,680
+chat and then test and you will see that this guy now gets it and if we go this is a test message
+
+585
+01:13:12,680 --> 01:13:21,000
+and we send that guy you can see that that message gets sent now you might be going okay so why does
+
+586
+01:13:21,000 --> 01:13:30,880
+this matter right what is the benefit of a group chat versus a dynamic chat well where a group chat
+
+587
+01:13:30,880 --> 01:13:37,300
+matters and why it's important is because you can do what's called listing the message history so
+
+588
+01:13:37,300 --> 01:13:42,820
+because it's a persistent chat we're going to be able to pull back all of that information so the
+
+589
+01:13:42,820 --> 01:13:49,880
+reason why that's cool is because we can come in here and we can say okay when the user joins a
+
+590
+01:13:49,880 --> 01:13:57,720
+group which we'll have to scroll down here to right here and we'll need to go ahead and come in here
+
+591
+01:13:57,720 --> 01:14:09,680
+and list out that information so we'll say far result is equal to await client dot list channel
+
+592
+01:14:09,680 --> 01:14:18,520
+messages asynchronous we'll pass in our session and then we'll pass in our currently selected groups
+
+593
+01:14:18,520 --> 01:14:25,040
+so selected group dot id we could pass in a limit value so in our case we'll just do 100 that's a
+
+594
+01:14:25,040 --> 01:14:31,360
+very decent value forward basically forward is forward or backwards right so we can grab the oldest
+
+595
+01:14:31,360 --> 01:14:37,600
+or the newest and that's what forward is is forward is the newest so we'll say forward so we'll say
+
+596
+01:14:37,600 --> 01:14:46,700
+true comma and then i believe they have a cursor value as well and cursor is if i remember correctly
+
+597
+01:14:46,700 --> 01:14:52,880
+it's defaulted let's double check really quick if we hit comma cursor variance is null so cursor
+
+598
+01:14:52,880 --> 01:14:59,200
+allows you to say i want you to start at this point so if you're picking up the next 100 values
+
+599
+01:14:59,200 --> 01:15:06,600
+let's say you have 500 messages you can pass in number 200 and then it'll grab from 200 to 300 if
+
+600
+01:15:06,600 --> 01:15:11,380
+that makes sense so in our case i'll just leave that as null because it's just going to be easier
+
+601
+01:15:11,380 --> 01:15:23,140
+for us to work with it now we can go for message in result dot message like that messages like that
+
+602
+01:15:23,140 --> 01:15:31,840
+and then we can basically just go exactly what we did before so we can come up here and grab if you
+
+603
+01:15:31,840 --> 01:15:39,320
+remember how we actually parsed out our data which arguably i should move this down closer to my
+
+604
+01:15:39,320 --> 01:15:44,540
+actual message functionality so let's go ahead and just do that really quick we'll come down here
+
+605
+01:15:44,540 --> 01:15:52,940
+and just drop it right let's see this is group stuff this is chat stuff so we'll go ahead and just
+
+606
+01:15:52,940 --> 01:15:58,440
+drop it right there and that'll just kind of keep it within the group area so that way i can
+
+607
+01:15:58,440 --> 01:16:06,640
+basically come in here and do this and say chat room code right here and that'll give me somewhere
+
+608
+01:16:06,640 --> 01:16:15,220
+to actually look at this now what we can do is we can basically just grab this copy it and paste and
+
+609
+01:16:15,220 --> 01:16:22,560
+that's all we need to do and then in theory this should just work so now if we hit play in theory if
+
+610
+01:16:22,560 --> 01:16:30,640
+we're lucky it will work so we'll go here we'll say list groups select group join group chat and we
+
+611
+01:16:30,640 --> 01:16:39,100
+got an error message return response invalid channel id so we have a failure here that says that our
+
+612
+01:16:39,100 --> 01:16:50,300
+channel id is incorrect so let's see join chat asynchronously list channel messages that should be
+
+613
+01:16:50,300 --> 01:17:00,660
+correct is it printing out what i expect let's see so i don't think that this worked 100 here so
+
+614
+01:17:00,660 --> 01:17:06,960
+let's try by submitting list groups select group that should select our group
+
+615
+01:17:10,020 --> 01:17:16,480
+and then i should be able to join group chat but it did not take it so the question is is it because
+
+616
+01:17:16,480 --> 01:17:26,900
+i failed to join the group chat or did it fail here so if we do this the id of the group id is
+
+617
+01:17:26,900 --> 01:17:35,500
+string get return if not string else string await list channel messages try refresh and it's gonna
+
+618
+01:17:35,500 --> 01:17:46,180
+run through that real quick but it didn't do anything as expected so if i drop a breakpoint here
+
+619
+01:17:46,180 --> 01:17:56,060
+what is result result is an object id cacheable null null so we got a nakama exception invalid
+
+620
+01:17:56,060 --> 01:18:03,520
+channel id so the question is is did our channel get saved let's go ahead and take a look at nakama
+
+621
+01:18:03,520 --> 01:18:12,480
+really quick chat messages group chat no messages found so our group chat just doesn't exist so
+
+622
+01:18:12,480 --> 01:18:17,680
+that's not great so that means something went wrong with how we initialized our group chat i think
+
+623
+01:18:17,680 --> 01:18:25,240
+okay so i figured out the issue so basically when we do our list channel messages async we need to
+
+624
+01:18:25,240 --> 01:18:31,920
+actually do our current channel dot id instead so when we do our join chat asynchronous we pull back
+
+625
+01:18:31,920 --> 01:18:37,560
+a channel and that's the channel that we're currently in and basically we need to go and list those
+
+626
+01:18:37,560 --> 01:18:44,560
+message right here and then i have a section here for messages in result messages if the message
+
+627
+01:18:44,560 --> 01:18:50,520
+content does not contain an empty so if for some reason a message gets in there that's empty when we
+
+628
+01:18:50,520 --> 01:18:55,880
+try to parse it it's going to break so i have this little if statement right here that basically
+
+629
+01:18:55,880 --> 01:19:01,420
+just checks to see if it's empty if it is ignore it and there's no reason to have it so now if i hit
+
+630
+01:19:01,420 --> 01:19:09,660
+play you'll notice that when i come in here and i hit submit i list my groups i select my groups and
+
+631
+01:19:09,660 --> 01:19:16,460
+i join my group chat you'll see i pull back those messages and that's one of the big cool features
+
+632
+01:19:16,460 --> 01:19:23,780
+of nakama is that it keeps track of all of that information because this is after we removed and
+
+633
+01:19:23,780 --> 01:19:30,040
+rebooted the system right it actually came back with the proper messages that's basically what
+
+634
+01:19:30,040 --> 01:19:39,720
+persistence does right here this true right here causes it to be saved and to be reusable later
+
+635
+01:19:39,720 --> 01:19:47,400
+that's one of the big cool advantages here so now the question is okay so how do i do peer-to-peer
+
+636
+01:19:47,400 --> 01:19:54,760
+messaging well it's not technically peer-to-peer but how do i send messages directly to a user well
+
+637
+01:19:54,760 --> 01:20:04,560
+again it's relatively simple if we come into our stuff here we control c control v join group chat
+
+638
+01:20:04,560 --> 01:20:15,440
+and then instead of join group chat we have a join direct chat i go ahead and grab our where is it
+
+639
+01:20:15,440 --> 01:20:25,440
+join group chat right here and i change this to join direct chat like that we can come in here
+
+640
+01:20:25,440 --> 01:20:31,380
+disconnect right click connect and connect now in order to do a direct chat it's actually relatively
+
+641
+01:20:31,380 --> 01:20:38,600
+easy it's exactly the same as everything else you come in here you go join chat room right here copy
+
+642
+01:20:38,600 --> 01:20:44,000
+it come down here paste well really actually we probably should just grab this to be honest it's
+
+643
+01:20:44,000 --> 01:20:49,760
+going to save us a bit of trouble so if we paste this guy in here change the channel type to direct
+
+644
+01:20:49,760 --> 01:20:58,920
+message like that instead of having a selected group id we need to grab the user id in terms of
+
+645
+01:20:58,920 --> 01:21:04,660
+persistence we want to keep true we also want to keep false for hidden but for this join chat
+
+646
+01:21:04,660 --> 01:21:13,700
+asynchronous we can go ahead and pass in a user id so we need to get our actual user identifier and
+
+647
+01:21:13,700 --> 01:21:19,000
+the easiest way to do that is by using the get users asynchronous call if you remember we did that
+
+648
+01:21:19,000 --> 01:21:29,820
+earlier so we'll just say var users is equal to await client dot get users asynchronous and then
+
+649
+01:21:29,820 --> 01:21:37,040
+we'll pass in our session and we need to pass in a id pack string array and then the user name that
+
+650
+01:21:37,040 --> 01:21:43,600
+we're going to be passing in so in our case i think if we take a look at our user interface we have
+
+651
+01:21:43,600 --> 01:21:50,380
+a chat name we could probably just take that i think that will work so for the chat name what i'll
+
+652
+01:21:50,380 --> 01:21:57,560
+do is i'll just pull this guy which is chat name so we'll come into our script we'll hit dollar sign
+
+653
+01:21:57,560 --> 01:22:06,540
+chat name dot text and then that should bring back our users so now we know that it's going to bring
+
+654
+01:22:06,540 --> 01:22:15,780
+back one user and that's it so since it's going to bring back one user we can basically just do if
+
+655
+01:22:15,780 --> 01:22:26,080
+users dot size is greater than zero then we can do the rest of this bit of code here and then we
+
+656
+01:22:26,080 --> 01:22:34,560
+just pass in and say users bracket bracket zero dot id and that'll pass back a user id that we can
+
+657
+01:22:34,560 --> 01:22:40,100
+actually communicate with so now in theory this should work and of course as always with theory it
+
+658
+01:22:40,100 --> 01:22:47,120
+doesn't always work but we'll see so we'll submit as test we'll submit as test two and then we'll go
+
+659
+01:22:47,120 --> 01:22:57,820
+test test two join direct chat it's mad and that's because users came back let's see with an array
+
+660
+01:22:57,820 --> 01:23:04,780
+it looks like it's users dot users so that's my fault so we'll say users dot users and i should
+
+661
+01:23:04,780 --> 01:23:14,140
+probably just do this as results then or perhaps user results because we don't want to mess with our
+
+662
+01:23:14,140 --> 01:23:20,720
+current code down here that has results already we'll just do that and then for this we'll just say
+
+663
+01:23:20,720 --> 01:23:26,140
+user result dot users
+
+664
+01:23:26,140 --> 01:23:31,300
+bracket bracket zero because we now know that we need to go a little bit deeper than what we
+
+665
+01:23:31,300 --> 01:23:41,280
+expected so now if we go ahead and submit test two join direct chat now we're in a direct chat if we
+
+666
+01:23:41,280 --> 01:23:49,000
+go into test two and we go to test join direct chat we pass test in
+
+667
+01:23:51,940 --> 01:23:56,880
+okay so i think i figured out what's going on here so i commented this out just so we could check it
+
+668
+01:23:56,880 --> 01:24:09,140
+out but what i think is going on here is remember in our previous tutorial we had test block test
+
+669
+01:24:09,140 --> 01:24:16,400
+two and because they're blocked they can't send them messages so it completely stops them from being
+
+670
+01:24:16,400 --> 01:24:23,680
+able to communicate with each other and that's why this is happening so if i remove this let's see
+
+671
+01:24:23,680 --> 01:24:30,540
+what happens if i do that so we'll go ahead and come in here we'll control s we'll hit play and then
+
+672
+01:24:30,540 --> 01:24:39,980
+we'll try it one more time so we'll do submit test to submit test join direct chat test to join
+
+673
+01:24:39,980 --> 01:24:48,000
+direct chat test we will send a message and that will now work now the reason why this didn't work
+
+674
+01:24:48,000 --> 01:24:54,200
+was because test had test two blocks so since they're blocked they can't communicate at all so
+
+675
+01:24:54,200 --> 01:25:01,760
+that's the reason why this happened so it was my fault but that was basically the reasoning now if
+
+676
+01:25:01,760 --> 01:25:10,880
+we go ahead and stop this and then we come in here and uncomment this with control k and then we run
+
+677
+01:25:10,880 --> 01:25:17,920
+this bad boy in theory we should be able to see our previous communications so test to join direct
+
+678
+01:25:17,920 --> 01:25:23,460
+chat and you will see there's all of our messages now i'm getting a little bit additional messages
+
+679
+01:25:23,460 --> 01:25:30,840
+mostly because of my testing not because of a problem with nakama that's just something that i did
+
+680
+01:25:30,840 --> 01:25:39,160
+on my own by accident but you can see here are all of the messages that we have so that's basically
+
+681
+01:25:39,160 --> 01:25:43,840
+how you do messages
+
+682
+01:25:43,840 --> 01:25:53,400
+back and forth inside of nakama hey guys editor mitch here so something that you should do once you
+
+683
+01:25:53,400 --> 01:26:01,540
+do your chat system and you get that guy settled when you have this chat right here what you should
+
+684
+01:26:01,540 --> 01:26:09,420
+also do is subscribe to everybody's channels so if you have friends or some kind of channel system
+
+685
+01:26:09,420 --> 01:26:15,900
+you need to subscribe to that channel so what i'm gonna do is come up to my on login login button
+
+686
+01:26:15,900 --> 01:26:21,220
+down so when i press my login i'm gonna go ahead and come in here and i'm gonna have sub to
+
+687
+01:26:24,060 --> 01:26:31,200
+friend channels like that now i'm gonna scroll down and i have a chat section in here so you can see
+
+688
+01:26:31,200 --> 01:26:37,480
+we have our little group section right here we scroll down we have a chat room code right here so
+
+689
+01:26:37,480 --> 01:26:45,320
+this is our chat section so right here just somewhere in this general section here we're gonna go
+
+690
+01:26:45,320 --> 01:26:53,300
+ahead and add in the ability to sub to the the friend channels right so we'll say funk sub to
+
+691
+01:26:53,300 --> 01:26:55,060
+friends
+
+692
+01:26:56,340 --> 01:27:05,640
+channels channels like that and then what i'm gonna do is say var results is equal to await client
+
+693
+01:27:05,640 --> 01:27:12,140
+dot list friends asynchronously i'm gonna pass in my session and that'll just bring in all of my
+
+694
+01:27:12,140 --> 01:27:19,860
+friends and then from here i can go ahead and subscribe to their channel so for i in results dot
+
+695
+01:27:19,860 --> 01:27:30,540
+friends like that and then i'm gonna go ahead and say var type is equal to nakama socket dot channel
+
+696
+01:27:30,540 --> 01:27:38,540
+type dot direct message and then i can go ahead and pull back my chat that i have so i can sub to
+
+697
+01:27:38,540 --> 01:27:47,620
+that channel so i can say await socket oh i have sub to friends sub to friend so we'll do friend
+
+698
+01:27:47,620 --> 01:27:54,580
+channels and that'll fix that little function not found so socket dot join chat async and then i'll
+
+699
+01:27:54,580 --> 01:28:05,720
+go ahead and pass an i dot user dot id comma type comma true comma false and that'll basically allow
+
+700
+01:28:05,720 --> 01:28:11,460
+me to pull those sockets back now this should return if i remember correctly a channel so if we
+
+701
+01:28:11,460 --> 01:28:15,300
+actually hit ctrl f you can see we have a couple of them you can see we have current channel right
+
+702
+01:28:15,300 --> 01:28:24,060
+here so what i'm going to do is i'm going to come here and say chat channels is equal to a weight
+
+703
+01:28:24,060 --> 01:28:34,980
+socket okay and actually now that i think about this let's do this so we'll do channel let's do this
+
+704
+01:28:34,980 --> 01:28:46,040
+channel is equal to this and then we can come down here and just say chat channels bracket bracket i
+
+705
+01:28:46,040 --> 01:28:54,280
+dot user dot id actually i wonder if i should do dot user name instead that way it's just a more
+
+706
+01:28:54,280 --> 01:29:04,380
+common value and i could go is equal to channel like that and that'll basically hook our channel
+
+707
+01:29:04,380 --> 01:29:11,380
+here to this object so i'll say var and then there we go and chat channels doesn't exist yet but now
+
+708
+01:29:11,380 --> 01:29:17,620
+we have a key value pair here that we can use and that's going to be really big for us if we want to
+
+709
+01:29:17,620 --> 01:29:25,100
+use those channels later so now i can go ahead and grab chat channels i can go up to the top var
+
+710
+01:29:25,100 --> 01:29:33,240
+chat channels like that and i can actually come in here and now i have access to all of my chats
+
+711
+01:29:33,240 --> 01:29:38,400
+right here so if i have like 100 chats i could actually pull back the channel information and switch
+
+712
+01:29:38,400 --> 01:29:46,880
+between them really easily using this object and i'll probably go through that later but it's a way
+
+713
+01:29:46,880 --> 01:29:56,180
+to extend our chat to be a bit more useful if that makes sense so if you think about it like this
+
+714
+01:29:56,180 --> 01:30:06,800
+basically what we could do is we could add in a tab container right here make that guy full screen
+
+715
+01:30:06,800 --> 01:30:13,760
+and then underneath that tab container you can actually switch between different tabs right and i
+
+716
+01:30:13,760 --> 01:30:22,040
+think what we could do and again this is going to be a lot of coding and then we could actually come
+
+717
+01:30:22,040 --> 01:30:27,960
+in here make this about i don't know about this big give or take and then we could put that chat
+
+718
+01:30:27,960 --> 01:30:36,540
+text underneath here right and this would allow us to in theory do this and then change the title of
+
+719
+01:30:36,540 --> 01:30:46,820
+this to username like so you can see here here's the username so what we could do at least in theory
+
+720
+01:30:46,820 --> 01:30:55,000
+is on startup once we subscribe to all of those channels it would just fill this out so for instance
+
+721
+01:30:55,000 --> 01:31:03,300
+if we come in here and we go and subscribe to those friend channels so if we grab this guy bring it
+
+722
+01:31:03,300 --> 01:31:12,500
+down here come in here and then basically just say tab container or i guess it's going to be dollar
+
+723
+01:31:12,500 --> 01:31:17,200
+sign tab container dot
+
+724
+01:31:18,360 --> 01:31:28,660
+add child and then we can add a child of this text box here so basically if we add a child of this
+
+725
+01:31:28,660 --> 01:31:33,920
+text box and i'm just kind of thinking this through as i talk to you guys so my apologies for how
+
+726
+01:31:33,920 --> 01:31:44,360
+confusing this is probably going to end up being but we could do a text box so this is going to be a
+
+727
+01:31:44,360 --> 01:31:46,980
+text edit so var
+
+728
+01:31:48,920 --> 01:31:57,440
+current edit is equal to text edit dot new like that and then we could pass in our current edit like
+
+729
+01:31:57,440 --> 01:31:57,780
+that
+
+730
+01:32:07,540 --> 01:32:18,780
+so i dot user dot user name like so and then when we log in you'll see that i'm going to have a tab
+
+731
+01:32:18,780 --> 01:32:25,260
+right here called username but if i click on login and it's mad at me so you can see invalid index
+
+732
+01:32:25,260 --> 01:32:33,680
+test 2 so let's take a look at this so create chat null so this is a null object it needs to be a
+
+733
+01:32:33,680 --> 01:32:40,360
+type dictionary that's my guess at least so we'll come in here we'll say colon equals bracket
+
+734
+01:32:40,360 --> 01:32:45,820
+bracket like that and that'll make it into an object and now if we try it it should in theory work
+
+735
+01:32:45,820 --> 01:32:52,320
+there we go and you can see we have test 2 and username right here and that means that we would be
+
+736
+01:32:52,320 --> 01:32:59,940
+able to go and fetch any messages that we want from that person so if we were to go in here sub to
+
+737
+01:32:59,940 --> 01:33:05,760
+friend chat go down here we could actually go and fetch that person's information if you remember we
+
+738
+01:33:05,760 --> 01:33:13,840
+actually do that right here we pull back the messages right here so what we could do is if we list
+
+739
+01:33:13,840 --> 01:33:18,060
+channel messages asynchronously we should probably pull this out and just do
+
+740
+01:33:21,620 --> 01:33:28,480
+list messages like that do this it's going to want to have a current channel dot id so current
+
+741
+01:33:28,480 --> 01:33:41,200
+channel like that and then we could come in here and just do current edit dot text is equal to list
+
+742
+01:33:41,200 --> 01:33:48,040
+messages and then we have to pass in our current channel so that would be our let's see channel
+
+743
+01:33:48,040 --> 01:33:53,480
+right here so channel so we'll pass to that channel that'll pass back all of the text in that
+
+744
+01:33:53,480 --> 01:34:02,980
+channel this is a coroutine so it must be called with await that makes sense so await and then
+
+745
+01:34:02,980 --> 01:34:11,440
+instead of doing this we'll just return that value so we'll just say var text oh i guess i'm gonna
+
+746
+01:34:11,440 --> 01:34:19,160
+have to create a text so var text is equal to quote and then we'll need to just do text plus equals
+
+747
+01:34:19,160 --> 01:34:28,880
+blah and then we can just return our text like that and then that will return text right here and
+
+748
+01:34:28,880 --> 01:34:39,440
+then instead of doing this when we join a chat group we can just go dollar sign or we could just go
+
+749
+01:34:39,440 --> 01:34:44,400
+in here and add in a panel like what we're doing right here you can see how we're joining chat
+
+750
+01:34:44,400 --> 01:34:56,640
+asynchronously so we really could just grab this section here and just paste it right here on this
+
+751
+01:34:56,640 --> 01:35:03,100
+guy like so and that'll basically solve that problem right there now technically this is duplicated
+
+752
+01:35:03,100 --> 01:35:09,520
+code and that's probably not the most ideal situation but that's probably okay for right now and
+
+753
+01:35:09,520 --> 01:35:17,820
+instead of doing our chat channel i username what we would do is we would do something like current
+
+754
+01:35:17,820 --> 01:35:28,740
+channel and then selected group so selected group.id the current name would also be the selected
+
+755
+01:35:28,740 --> 01:35:34,060
+group id i guess we'd probably want to come up with a better way maybe we could just call it current
+
+756
+01:35:34,060 --> 01:35:42,320
+group right instead of the name like so and then we could probably come in here and list our current
+
+757
+01:35:42,320 --> 01:35:48,580
+channel as well and in theory that would work so now if we hit play in theory we would have a
+
+758
+01:35:48,580 --> 01:35:55,860
+tabular messaging system now we can hit submit and there's all of our messages right there and we
+
+759
+01:35:55,860 --> 01:36:01,300
+have different tabs that we can work with i think if i do test it's probably going to get mad at me
+
+760
+01:36:01,300 --> 01:36:06,620
+invalid index id that makes sense because current channel.id
+
+761
+01:36:09,300 --> 01:36:16,100
+current channel is null my guess is because i'm not in a channel yet so that would make sense so
+
+762
+01:36:16,100 --> 01:36:21,360
+what we would need to do is we need to make our tab container handle that when the tab gets switched
+
+763
+01:36:21,360 --> 01:36:30,280
+which i think there is a on tab changed right here so we would have to keep track of which index our
+
+764
+01:36:30,280 --> 01:36:36,060
+stuff is actually located in so i think that that's okay so we could actually just do this on tab
+
+765
+01:36:36,060 --> 01:36:43,260
+changed like so and then we could just keep track of what index we're on when the user changes their
+
+766
+01:36:43,260 --> 01:36:53,340
+tab it kind of keeps track of that so how i would do that is if i go into where the tabs are located
+
+767
+01:36:53,340 --> 01:36:59,560
+so you can see here and i know this is probably a little bit confusing and my apologies i'm just
+
+768
+01:36:59,560 --> 01:37:05,360
+kind of working through it with you guys but so you can see right here we have a channel uh selected
+
+769
+01:37:05,360 --> 01:37:12,460
+group id current channel so what we could do is when we do our tab container we could actually
+
+770
+01:37:12,460 --> 01:37:23,880
+connect our um tab changed event and then bind the um user id to it so we could do is we could do
+
+771
+01:37:23,880 --> 01:37:36,020
+dollar sign panel tab container dot add child like so but we could do dot tab changed dot connect
+
+772
+01:37:36,020 --> 01:37:48,160
+and then we could put on tab changed and i guess i should do on chat tab changed dot bind and i can
+
+773
+01:37:48,160 --> 01:38:01,140
+pass in the selected group id like so so and then we could come in here and just say func on chat
+
+774
+01:38:01,140 --> 01:38:09,360
+tab changed like so and then we could pass in int tab comma or i guess it would be i'm sorry i'm
+
+775
+01:38:09,360 --> 01:38:22,940
+trying to code in c sharp tab colon int comma and then we could pass in group id or channel id
+
+776
+01:38:22,940 --> 01:38:30,520
+like that and that would pass in that value like that and there we go so what that's going to do is
+
+777
+01:38:30,520 --> 01:38:40,080
+allow us to print well uh tab comma channel id like that and that will give us the ability to work
+
+778
+01:38:40,080 --> 01:38:46,840
+with this now when we join a chat group that's how we have to handle that but when we do our sub to
+
+779
+01:38:46,840 --> 01:38:52,680
+friends channel we got to do that as well so that way we can do it on both so now if i hit play in
+
+780
+01:38:52,680 --> 01:39:00,860
+theory if i do submit it's mad at me unable to get index id on base nil that's because selected
+
+781
+01:39:00,860 --> 01:39:08,080
+group is null and that's because i'm dumb and i chose the wrong bind it's going to be i dot user dot
+
+782
+01:39:08,080 --> 01:39:14,680
+username so we'll grab that and paste it right here let's try that one more time so i'm going to
+
+783
+01:39:14,680 --> 01:39:19,620
+come in here i'm going to go submit and it once again is going to be mad a non-existent function
+
+784
+01:39:19,620 --> 01:39:29,700
+bind on base int that's mad about let me see i think i might have figured it out what if i do this
+
+785
+01:39:29,700 --> 01:39:37,680
+instead and then i have to go and find my other bind which should be i think i need to put it out
+
+786
+01:39:37,680 --> 01:39:45,920
+inside the the signal connection so i'm connecting i'm binding this to the signal not to the
+
+787
+01:39:45,920 --> 01:39:52,240
+connection function i think that's what's doing it so let's try that let's grab the other one so you
+
+788
+01:39:52,240 --> 01:40:01,260
+see how this one connect dot bind instead i think i need to bind and then do that and then i should
+
+789
+01:40:01,260 --> 01:40:09,440
+be able to make that work and i believe it is index and then channel id so let's try that let's see
+
+790
+01:40:09,440 --> 01:40:16,540
+what that does there we go and then if i click test two it should have displayed test two right
+
+791
+01:40:16,540 --> 01:40:25,340
+there so that's perfect so what that means is that we can go current channel is equal to chat
+
+792
+01:40:25,340 --> 01:40:34,900
+channels bracket bracket channel id like that and then what that means is now we should be able to
+
+793
+01:40:34,900 --> 01:40:41,420
+since we're binding those parameters i should be able to send a message and it should just take it
+
+794
+01:40:41,420 --> 01:40:48,820
+in theory invalid get text on null that's fine my guess is that's because chat text box doesn't
+
+795
+01:40:48,820 --> 01:40:54,260
+exist anymore because now we're going the opposite direction right so we're sending a message if you
+
+796
+01:40:54,260 --> 01:41:01,340
+see here if you look at the content message is test type is zero and if you take a look at this
+
+797
+01:41:01,340 --> 01:41:13,120
+object it has the channel id sender id user id 12 and then user name now if we take a look at our
+
+798
+01:41:13,120 --> 01:41:21,360
+channel objects right here so chat channels you can see test two is our parameter here that's going
+
+799
+01:41:21,360 --> 01:41:31,940
+to be our players information if that makes sense so i think we could probably get away with since
+
+800
+01:41:31,940 --> 01:41:41,740
+this is going to give us test as its content and the message is going to say sender id is right here
+
+801
+01:41:41,740 --> 01:41:48,240
+the channel id is right here i wonder if we should pull because it has a username right here but
+
+802
+01:41:48,240 --> 01:41:55,900
+that's not going to hook us up to our channel code so i'm curious if we need to change how we send
+
+803
+01:41:55,900 --> 01:42:02,540
+our data across so we send our data we're sending the message and then the current channel id okay
+
+804
+01:42:02,540 --> 01:42:08,140
+so i think i know what i'm going to do here so we're actually going to change up a little bit how
+
+805
+01:42:08,140 --> 01:42:15,980
+we're doing this and the reason why i'll show you if we take a look at right here we're passing in
+
+806
+01:42:15,980 --> 01:42:25,960
+our current channel what i'm going to do is i'm going to come in here and pass in instead of just a
+
+807
+01:42:25,960 --> 01:42:33,220
+current channel i'm going to pass in channel like that colon current channel and then i'm also going
+
+808
+01:42:33,220 --> 01:42:43,360
+to pass in a label value just so i can have the label if i need it for whatever reason and the label
+
+809
+01:42:43,360 --> 01:42:50,100
+in the selected group id will probably just be group chat because it really doesn't need to have
+
+810
+01:42:50,100 --> 01:42:59,520
+anything special and if we go to the other one so channel chats we go to the other one which is
+
+811
+01:42:59,520 --> 01:43:06,580
+right here so this one needs to go dot channel because we're making that adjustment real quick you
+
+812
+01:43:06,580 --> 01:43:11,000
+can see right here we're doing channel so you can see we'll need to make that adjustment and then
+
+813
+01:43:11,000 --> 01:43:17,620
+we'll just copy this guy right here we'll paste it like so and then i'm going to go ahead and pass
+
+814
+01:43:17,620 --> 01:43:18,940
+in ctrl x
+
+815
+01:43:21,940 --> 01:43:29,860
+channel like that and that will allow us to have an object that has a label here and then for the
+
+816
+01:43:29,860 --> 01:43:37,380
+actual label itself i'll just pass this guy in like that and then i'll just do channel.id like that
+
+817
+01:43:37,380 --> 01:43:48,140
+and then if we have this then we should be able to use this to pull back that channel information
+
+818
+01:43:48,140 --> 01:43:54,800
+instead and i know what you're thinking that doesn't sound like it's going to work but it's probably
+
+819
+01:43:54,800 --> 01:44:04,280
+not going to work so let's go ahead and say on tab change bind selected group id if i do on tab
+
+820
+01:44:04,280 --> 01:44:16,060
+changed bind channel id like that and then when we produce our message here we're going to be
+
+821
+01:44:16,060 --> 01:44:25,300
+fetching back this on channel message parse the content and
+
+822
+01:44:25,300 --> 01:44:34,040
+right here we will have a chat box so you can see we have chat chat box it'll be tab container dot
+
+823
+01:44:34,040 --> 01:44:44,600
+get node like that content dot and if we take a look at what our message is going to be right here
+
+824
+01:44:44,600 --> 01:44:52,420
+so we have our right message asynchronous we'll just say content dot id like so and then here we can
+
+825
+01:44:52,420 --> 01:45:05,480
+pass in quote id colon and fetch back our channel information so chat channels like so channel id so
+
+826
+01:45:05,480 --> 01:45:15,760
+it'd be current channel dot id right here like that and that will pass back our channel information
+
+827
+01:45:15,760 --> 01:45:24,920
+and then from here we could just go dot label and that should allow us to fetch back the correct
+
+828
+01:45:24,920 --> 01:45:31,860
+node and set the proper information right there and in theory that would work let's try that and see
+
+829
+01:45:31,860 --> 01:45:39,980
+how that works so if we hit submit test to test send you'll see that we now get our test information
+
+830
+01:45:39,980 --> 01:45:48,080
+so this is a test message like that and we click go you'll see this is a test message just like that
+
+831
+01:45:48,080 --> 01:45:56,380
+and that's basically how we can make a tabbed system as well that should actually work for our chat
+
+832
+01:45:56,380 --> 01:46:05,460
+system so now that we have a basic chatting system that fully works let's talk about how we can host
+
+833
+01:46:05,460 --> 01:46:12,160
+this out on the cloud because the best way to get your networking working is by hosting it out on
+
+834
+01:46:12,160 --> 01:46:17,920
+the cloud that means that you have to pay a server to host that information so if you want a
+
+835
+01:46:17,920 --> 01:46:24,620
+multiplayer game you need to actually pay to host that data somewhere right and that is where
+
+836
+01:46:24,620 --> 01:46:34,920
+digital ocean comes in digital ocean is a pretty great tools kit that will allow you to host your
+
+837
+01:46:34,920 --> 01:46:41,200
+projects right here on their servers and it's relatively cheap if you take a look at the pricing you
+
+838
+01:46:41,200 --> 01:46:46,760
+can see they have some pretty cheap droplets so if you wanted a cheap like five dollar server to
+
+839
+01:46:46,760 --> 01:46:53,160
+host your game that's more or less what this is for is it allows you to actually host stuff out in
+
+840
+01:46:53,160 --> 01:47:00,080
+the cloud for relatively cheap and i will drop a link in the description below that if you guys use
+
+841
+01:47:00,080 --> 01:47:08,100
+it it will give me credits to be able to host my own stuff now i will be hosting stuff for this
+
+842
+01:47:08,100 --> 01:47:13,220
+tutorial here i'll be giving you guys an ip address and you guys can use it for your testing but
+
+843
+01:47:13,220 --> 01:47:20,560
+just know that if you want to go out into production you need to use your own server and something
+
+844
+01:47:20,560 --> 01:47:27,840
+to keep in mind you can host your own server as well locally but it's a lot harder it's not as safe
+
+845
+01:47:27,840 --> 01:47:31,760
+and people can hack into your networks and things like that so it's really nice just to use
+
+846
+01:47:31,760 --> 01:47:37,960
+something like this to host it for you so that you can get your game out there and get people
+
+847
+01:47:37,960 --> 01:47:44,240
+playing it and playing together so let's go ahead and create an account or log in whichever one you
+
+848
+01:47:44,240 --> 01:47:51,640
+guys have so i'm going to go ahead and log in real quick so this is digital ocean and basically the
+
+849
+01:47:51,640 --> 01:47:57,380
+nice thing here is this is your dashboard right so this is the digital ocean dashboard so here is
+
+850
+01:47:57,380 --> 01:48:02,240
+where you can manage all of your resources now you can see up here you have your profile information
+
+851
+01:48:02,240 --> 01:48:09,060
+and then you have whatever droplets you have now in digital ocean droplets are considered machines
+
+852
+01:48:09,060 --> 01:48:14,260
+okay and you can see that they have all sorts of really cool features here they have spaces which is
+
+853
+01:48:14,260 --> 01:48:19,180
+basically like storage they have database stuff so if you actually come in here you can see that you
+
+854
+01:48:19,180 --> 01:48:26,300
+can spin up databases right here so if you're using nakama you can actually store your database
+
+855
+01:48:26,300 --> 01:48:33,660
+outside of your droplet and allow for load balancing they actually have a full built-in load
+
+856
+01:48:33,660 --> 01:48:39,160
+balancing system right here spinning up a load balance so you can actually choose different data
+
+857
+01:48:39,160 --> 01:48:45,720
+regions and pass data in between different regions and things like that by using their load
+
+858
+01:48:45,720 --> 01:48:51,160
+balancers now that being said that's way beyond the scope of this tutorial but that's what i'm
+
+859
+01:48:51,160 --> 01:48:56,560
+trying to say is digital ocean has a bunch of stuff for you to use that can help you get up to the
+
+860
+01:48:56,560 --> 01:49:01,600
+point where you can use nakama premium and actually have them handle a lot of that for you but this
+
+861
+01:49:01,600 --> 01:49:09,100
+is a good way to kind of get started into that if that makes sense so let's go ahead and talk about
+
+862
+01:49:09,100 --> 01:49:13,380
+how to create a droplet so let's go up here to the upper right hand corner click on create click on
+
+863
+01:49:13,380 --> 01:49:19,340
+droplet you could do an app platform that's technically going to be cheaper but it's a lot harder to
+
+864
+01:49:19,340 --> 01:49:22,920
+get everything set up properly so i'm just going to do a droplet for right now
+
+865
+01:49:26,080 --> 01:49:31,780
+and so we can pick what region we want our droplet in so right here i'm going to choose new york new
+
+866
+01:49:31,780 --> 01:49:36,620
+york is the closest to me so we'll choose that we'll come down here and you could choose an image
+
+867
+01:49:36,620 --> 01:49:40,920
+now if you have a specific image that you're looking for go ahead and pick it right here in my case
+
+868
+01:49:40,920 --> 01:49:45,800
+i'm going to go with ubuntu but if you want to you can also look at the marketplace and you could
+
+869
+01:49:45,800 --> 01:49:52,580
+pick different stuff so docker on ubuntu probably would be a good image to get or maybe something
+
+870
+01:49:52,580 --> 01:49:58,120
+like lamp if you're trying to do a lamp server or wordpress or something like that they have so many
+
+871
+01:49:58,120 --> 01:50:07,140
+different droplets that you can actually use have at your disposal you can see here you can also do
+
+872
+01:50:07,140 --> 01:50:12,700
+custom images so if you have an image you can actually just spin it up and have it work now in my
+
+873
+01:50:12,700 --> 01:50:18,220
+case i'm going to go with os ubuntu we're going to start from base even though technically docker on
+
+874
+01:50:18,220 --> 01:50:27,620
+ubuntu probably is a better option so i'm going to go so so i'm going to go with marketplace docker
+
+875
+01:50:27,620 --> 01:50:32,180
+on ubuntu that's going to save us a lot of trouble and get it all set up for us right so all we have
+
+876
+01:50:32,180 --> 01:50:36,680
+to do is get our docker composed and then set up our firewall rules and we'll be good to go so we'll
+
+877
+01:50:36,680 --> 01:50:42,140
+go ahead and add that guy now if you come in here you can see that you have a bunch of different
+
+878
+01:50:42,140 --> 01:50:45,960
+options for size now it depends on what you're trying to do
+
+879
+01:50:50,560 --> 01:50:59,920
+and typically what i tell people is you want to pick the lowest value that you can and plus one so
+
+880
+01:50:59,920 --> 01:51:03,980
+for instance if you think that your game is going to be really small and not a lot of people are
+
+881
+01:51:03,980 --> 01:51:09,020
+going to play it then something like the 14 a month one is probably pretty good if you're looking
+
+882
+01:51:09,020 --> 01:51:14,560
+for something really cheap just for testing if you go to regular and you kick it over you can see
+
+883
+01:51:14,560 --> 01:51:19,840
+that you can just do something like the six dollar a month one or even the four dollar a month one
+
+884
+01:51:19,840 --> 01:51:27,080
+if you can get away with under 10 gigabytes if you were to come up here and choose os ubuntu then
+
+885
+01:51:27,080 --> 01:51:35,640
+you could go down to four dollars a month at 512 megabytes now once you get down that low this is
+
+886
+01:51:35,640 --> 01:51:41,880
+basically only used for testing you want to at minimum have six dollars a month the one gigabyte one
+
+887
+01:51:41,880 --> 01:51:51,580
+cpu just because it's going to allow you to have a lot more flexibility for your project now since
+
+888
+01:51:51,580 --> 01:52:00,000
+i'm doing a marketplace image of and now since this is going to be a tutorial i should probably just
+
+889
+01:52:00,000 --> 01:52:06,160
+do ubuntu with the four because odds are you're not going to have the funding to do this or
+
+890
+01:52:06,160 --> 01:52:11,460
+something like that so we'll try the four we might have to upgrade to six we'll see and then you can
+
+891
+01:52:11,460 --> 01:52:17,160
+see here that you can add a volume which will allow you to expand your disk space now in our case we
+
+892
+01:52:17,160 --> 01:52:22,100
+don't need that because it's fine for right now and you can see that we have authentication so we
+
+893
+01:52:22,100 --> 01:52:29,080
+have ssh key and password now in my case we're just going to do so i'm going to set my password
+
+894
+01:52:29,080 --> 01:52:35,300
+right here and we'll scroll down here and you can see that we can do improved metrics and monitoring
+
+895
+01:52:35,300 --> 01:52:42,540
+for free so may as well turn that on and i don't think we need to do a database cluster here but we
+
+896
+01:52:42,540 --> 01:52:47,460
+can look at that in the future so you can see here is our host name right here which i'll call it
+
+897
+01:52:47,460 --> 01:52:52,980
+youtube2 tags i'm not worried about it and then you'll see that it has a project right here now this
+
+898
+01:52:52,980 --> 01:52:57,900
+project is where it's going to get built under so don't worry it'll just get built under your
+
+899
+01:52:57,900 --> 01:53:04,820
+account and then we'll click create droplet now this is going to allow us to have a droplet once it
+
+900
+01:53:04,820 --> 01:53:10,960
+gets built which should be relatively quick there we go you can see it's in the middle of building
+
+901
+01:53:10,960 --> 01:53:16,660
+it and it is now completed so it actually created your little droplet right here so now at this
+
+902
+01:53:16,660 --> 01:53:23,740
+point once we click into it you can see here is our youtube 2 droplet you can see we have our graphs
+
+903
+01:53:23,740 --> 01:53:30,140
+for our bandwidth cpu usage stuff like that we have access which allows us to adjust our access to
+
+904
+01:53:30,140 --> 01:53:35,300
+it we have power which allows you to turn it off and on we have volumes which allow you to have
+
+905
+01:53:35,300 --> 01:53:42,960
+block storage resize which allows you to change how big and strong that droplet is so you're welcome
+
+906
+01:53:42,960 --> 01:53:50,460
+to go in and actually upgrade this later so if you need that one giga memory or that one 10 gigabyte
+
+907
+01:53:50,460 --> 01:53:56,940
+ssd right that's all stuff that right here is available and then you can come in here and go into
+
+908
+01:53:56,940 --> 01:54:02,560
+networking you can change your network ip address your firewall stuff you can come in here and back
+
+909
+01:54:02,560 --> 01:54:10,300
+it up you can get snapshots of it so that way if you need this droplet to be perfect and snapshotted
+
+910
+01:54:10,300 --> 01:54:15,640
+for backup purposes this is what this is for it allows you to basically go back to that point in
+
+911
+01:54:15,640 --> 01:54:21,640
+time and apply it to your image so the nice thing is is if you create snapshots and your stuff gets
+
+912
+01:54:21,640 --> 01:54:27,640
+hacked or something like that you can roll back to that snapshot and stop that hack from happening
+
+913
+01:54:27,640 --> 01:54:33,160
+kernel is something that you're not going to be using but basically it allows you to upgrade your
+
+914
+01:54:33,160 --> 01:54:38,860
+linux kernel history is the history of it destroy allows you to destroy that droplet tags allows you
+
+915
+01:54:38,860 --> 01:54:45,860
+to tag it and recovery allows you to try to recover your droplet now that we've gone through all of
+
+916
+01:54:45,860 --> 01:54:51,580
+this let's go up to our console here and click on that you'll see that that's going to pop up a
+
+917
+01:54:51,580 --> 01:54:58,280
+droplet console now this is pretty cool because you actually have a full linux machine here so if
+
+918
+01:54:58,280 --> 01:55:04,460
+you don't know linux now is the time to learn because linux is very important to know so first
+
+919
+01:55:04,460 --> 01:55:16,460
+things first inside of ubuntu to install docker what you need to do is you need to type sudo apt-get
+
+920
+01:55:16,460 --> 01:55:23,900
+update and that's going to update all of your mirrors out there and then we need to go in and
+
+921
+01:55:23,900 --> 01:55:29,540
+actually add the repository because docker doesn't actually exist in the repo by default so we'll
+
+922
+01:55:29,540 --> 01:55:37,240
+say sudo apt-get install ca-certificates
+
+923
+01:55:37,240 --> 01:55:43,420
+curl like that and that's going to go ahead and make sure that we have curl installed and then we'll
+
+924
+01:55:43,420 --> 01:55:59,160
+sudo install m 0755-d slash etc slash apt slash key rings and then we're going to go in and curl out
+
+925
+01:55:59,160 --> 01:56:06,840
+to the docker linux ubuntu i will actually leave these commands in the comments below by the way so
+
+926
+01:56:06,840 --> 01:56:09,260
+you guys can use it but sudo curl
+
+927
+01:56:12,260 --> 01:56:27,000
+dash f s s dash l f s capital s l https colon slash slash download dot docker dot com slash linux
+
+928
+01:56:27,000 --> 01:56:33,800
+slash ubuntu slash gpg dash o space slash etc
+
+929
+01:56:36,840 --> 01:56:48,540
+slash apt slash key rings slash docker dot asc and what that's going to do is it's going to actually
+
+930
+01:56:48,540 --> 01:56:56,960
+create a docker gpg apt repo for you so that way you can actually go and install docker and then we
+
+931
+01:56:56,960 --> 01:57:09,760
+need to allow access to it so sudo ch mod a plus r slash etc slash apt slash key rings docker asc
+
+932
+01:57:09,760 --> 01:57:18,180
+and that basically allows us to execute and use that data that's right there so basically linux is a
+
+933
+01:57:18,180 --> 01:57:26,260
+permission system that is very very aggressive so you need to make sure that you keep that stuff
+
+934
+01:57:26,260 --> 01:57:32,840
+under wraps if that makes sense so uh linux by default does not give you permissions to anything and
+
+935
+01:57:32,840 --> 01:57:38,680
+you have to give yourself permissions to it so that's kind of what we're doing right here so then we
+
+936
+01:57:38,680 --> 01:57:46,880
+can come in here and finally fire off our apt resources now this command is going to be really
+
+937
+01:57:46,880 --> 01:57:53,640
+difficult to do so we'll do echo slash enter and that's going to allow us to kind of get a actual
+
+938
+01:57:53,640 --> 01:57:59,920
+script going here so we'll say quote deb space bracket arch
+
+939
+01:58:27,100 --> 01:58:29,900
+that's going to be really difficult to do so we're going to do so we're going to do so we're going
+
+940
+01:58:29,900 --> 01:58:29,900
+to
+
+941
+01:58:35,680 --> 01:58:41,880
+docker dot docker dot com slash linux slash ubuntu
+
+942
+01:58:45,320 --> 01:58:57,800
+and then we're going to put that in dollar sign dot slash etc etc slash os dash release and we're
+
+943
+01:58:57,800 --> 01:58:59,880
+going to echo our version code name
+
+944
+01:59:04,300 --> 01:59:11,100
+and we're going to pull back the stable version like that we're going to pass in a pipe and we're
+
+945
+01:59:11,100 --> 01:59:26,880
+going to pipe that into sudo t slash etc slash apt slash source dot list dot d slash docker dot list
+
+946
+01:59:26,880 --> 01:59:37,260
+greater than sign slash dev slash null and i know that that's a terrible command but basically all
+
+947
+01:59:37,260 --> 01:59:43,240
+this command is doing is we're going and we're adding in we're going deb all of this information and
+
+948
+01:59:43,240 --> 01:59:50,800
+we're piping all this info into our sudo our sources list right here for docker and that's basically
+
+949
+01:59:50,800 --> 01:59:55,120
+all we're doing here i know that it seems really confusing but that's basically what we're doing
+
+950
+01:59:55,120 --> 01:59:59,840
+here now i'm going to double check this command because i just spotted a mistake right here where i
+
+951
+01:59:59,840 --> 02:00:05,740
+did equal equal instead of dash dash so let me double check this command and make sure that i'm
+
+952
+02:00:05,740 --> 02:00:12,080
+happy with it so we have arch eat dollar sign d package our print architecture we're going to sign
+
+953
+02:00:12,080 --> 02:00:18,660
+it by our docker asc file and we're going to go out to our docker linux ubuntu and we're going to
+
+954
+02:00:18,660 --> 02:00:22,960
+pull back the os release
+
+955
+02:00:24,620 --> 02:00:30,320
+and i misspelled echo right here you can see i made a mistake as always you make a million mistakes
+
+956
+02:00:30,320 --> 02:00:31,760
+when you do this so echo
+
+957
+02:00:37,780 --> 02:00:45,200
+echo so that's e-c-h-o and then we have our version code name that we are echoing into our release
+
+958
+02:00:45,200 --> 02:00:51,080
+we're pulling back the stable edition we're going to pipe that into sudo t right here into our
+
+959
+02:00:51,080 --> 02:01:00,020
+docker lists and we're greater than slash dev null and we'll run that command e-c-o is not found
+
+960
+02:01:00,020 --> 02:01:06,700
+that's because i spelled echo wrong so i guess it's good thing that i that it failed immediately so
+
+961
+02:01:06,700 --> 02:01:17,200
+e c h o and we will try running it hopefully this doesn't blow up all right so we have no such file
+
+962
+02:01:17,200 --> 02:01:23,640
+or directory so all right so i think i figured it out basically there is an issue with the command
+
+963
+02:01:23,640 --> 02:01:32,720
+for i think it was this area here so don't worry just copy what i have in my description and just
+
+964
+02:01:32,720 --> 02:01:42,120
+use that and it will just work for you so now all i got to do is type sudo apt dash get update like
+
+965
+02:01:42,120 --> 02:01:47,520
+that and that's going to update all of our packages in our repo and it's going to go and fetch out
+
+966
+02:01:47,520 --> 02:01:55,260
+to the docker system and pull back the actual docker packages so you can see right here it's
+
+967
+02:01:55,260 --> 02:01:59,120
+actually pulling down that information right there and then we're going to go ahead and install
+
+968
+02:01:59,120 --> 02:02:09,560
+docker so sudo apt dash get install docker dash ce docker dash ce dash cli
+
+969
+02:02:12,460 --> 02:02:22,820
+container.io docker dash build dash plug-in and finally the most important one of the group docker
+
+970
+02:02:22,820 --> 02:02:29,200
+dash compose dash compose dash plug-in and that's the big one that's the one that's actually going
+
+971
+02:02:29,200 --> 02:02:33,760
+to matter for our project for the most part i mean the rest of these are obviously important docker
+
+972
+02:02:33,760 --> 02:02:42,320
+ce is the docker uh runtime docker ce cli is this command line interface the uh container is the
+
+973
+02:02:42,320 --> 02:02:48,800
+actual container uh system docker build plugins is to build your own docker containers and then
+
+974
+02:02:48,800 --> 02:02:54,920
+docker compose allows you to actually compose dockers based off of a docker composition file if you
+
+975
+02:02:54,920 --> 02:02:59,620
+remember before when we talked about how to build nakama that was one of the big things that you
+
+976
+02:02:59,620 --> 02:03:03,820
+need to use so we'll hit enter it's going to go ahead and try to pull it it says that it cannot
+
+977
+02:03:03,820 --> 02:03:11,240
+locate the docker build plugin my guess is i spelled something wrong here so let's see docker build
+
+978
+02:03:11,240 --> 02:03:21,540
+x plugin there we go hit go and it should go ahead and download and install docker now we might need
+
+979
+02:03:21,540 --> 02:03:26,920
+to upgrade to the next step up to the one gigabyte edition but we're going to see if we can get away
+
+980
+02:03:26,920 --> 02:03:33,860
+with the four dollar a month version first and if we can't then we'll upgrade to the six dollar a
+
+981
+02:03:33,860 --> 02:03:39,320
+month version and then we can run our docker setup here so we'll see how this works but we'll go
+
+982
+02:03:39,320 --> 02:03:49,220
+from there so it looks like it is running if we type ps you will see that we have a bash and ps
+
+983
+02:03:49,220 --> 02:03:49,820
+running
+
+984
+02:03:52,420 --> 02:03:59,920
+so if we type docker is it going to pop up and there we go so we do have docker running so perfect
+
+985
+02:03:59,920 --> 02:04:08,520
+that's exactly what we want so now from here we need to get a docker compose file onto here so if we
+
+986
+02:04:08,520 --> 02:04:17,100
+type ls right here you can see that we have nothing going on so what we can do is we can type mk dur
+
+987
+02:04:17,100 --> 02:04:24,380
+nakama cd nakama like that and that's going to get us into that directory so mk dur makes the
+
+988
+02:04:24,380 --> 02:04:31,620
+directory cd nakama just brings us into the nakama directory so now we can come in here and
+
+989
+02:04:31,620 --> 02:04:40,160
+basically compose our docker file so if we're lucky we'll be able to just copy and paste our
+
+990
+02:04:40,160 --> 02:04:46,820
+composition file so if we go out here we go to documents and we find our nakama instance i believe i
+
+991
+02:04:46,820 --> 02:04:56,200
+have a nakama server tutorial docker compose.yaml so if we open this guy up you'll see this is what
+
+992
+02:04:56,200 --> 02:05:01,820
+our docker compose file looks like you can see right here this is what it looks like so if we hit
+
+993
+02:05:01,820 --> 02:05:16,260
+ctrl a ctrl c and then we go into our web browser here and we type nano docker dash compose dot yml
+
+994
+02:05:17,200 --> 02:05:23,920
+and then we right click paste it should paste all that data right into here so that way we don't
+
+995
+02:05:23,920 --> 02:05:28,960
+actually have to set up filezilla because one of the things that's unfortunate is a lot of times if
+
+996
+02:05:28,960 --> 02:05:37,640
+you're doing godot networking you need to actually put files up into filezilla and into the ftp and
+
+997
+02:05:37,640 --> 02:05:43,480
+bring them over to digital oceans to your digital ocean droplet so thankfully we can just copy and
+
+998
+02:05:43,480 --> 02:05:52,780
+paste this and control x y and it'll be docker compose dot yaml and now from here we should be able
+
+999
+02:05:52,780 --> 02:06:03,000
+to just get it to run if we're lucky so what we'll do come in here and type docker compose up and
+
+1000
+02:06:03,000 --> 02:06:08,780
+you'll see it's going to go ahead and attempt to pull and build our docker instance right here now
+
+1001
+02:06:08,780 --> 02:06:15,300
+we might run out of ram it just kind of depends but hopefully with 512 megs of ram it's going to be
+
+1002
+02:06:15,300 --> 02:06:19,940
+really tight i don't know if this is going to work we're probably going to need a gig but we can see
+
+1003
+02:06:19,940 --> 02:06:27,440
+so we'll let this run and we'll attempt to run it and it looks like it might have worked so what we
+
+1004
+02:06:27,440 --> 02:06:37,000
+can do is if we go out to our youtube 2 we grab our public ip we go to our nakama console and we
+
+1005
+02:06:37,000 --> 02:06:48,820
+just put in actually i'll just make a new thing colon and we'll put in 7351 so 7351 enter does it do
+
+1006
+02:06:48,820 --> 02:06:55,600
+anything that's the first question it doesn't look like it's going to so now we got to figure out is
+
+1007
+02:06:55,600 --> 02:07:05,800
+it this guy's fault it looks like this is running so my question is server is ready to receive web
+
+1008
+02:07:05,800 --> 02:07:13,400
+requests so it did spin up properly it started the rule manager properly so that's good news oh you
+
+1009
+02:07:13,400 --> 02:07:19,840
+can see it is just absolutely chugging though so if we take a look at our youtube docker container
+
+1010
+02:07:19,840 --> 02:07:27,340
+let's see it looks like our cpu utilization is pretty high our disk io is relatively high as well we
+
+1011
+02:07:27,340 --> 02:07:37,400
+probably need to upgrade to have one gig of ram but at least it is running so there is that the
+
+1012
+02:07:37,400 --> 02:07:43,000
+question is so i was able to get it to stop so what we'll do is we'll close it we'll go to our
+
+1013
+02:07:43,000 --> 02:07:49,160
+youtube we'll go over to upgrade droplet and then we'll go ahead and just upgrade that up to one
+
+1014
+02:07:49,160 --> 02:07:58,080
+size larger to the one gigabyte edition so we'll do that and then we'll click cpu ram when it's
+
+1015
+02:07:58,080 --> 02:08:02,880
+going to ask us to turn off our droplet so we'll go up to power we'll power it off because there's
+
+1016
+02:08:02,880 --> 02:08:08,140
+nothing on here anyway so we can just power cycle it pretty hard there we go it's powered down we'll
+
+1017
+02:08:08,140 --> 02:08:16,020
+go to resize and we'll adjust it up one size just to let it be the proper size that it needs to be
+
+1018
+02:08:16,020 --> 02:08:22,640
+we're going to let that run you'll see it's thinking about it there we go and now we got a one size
+
+1019
+02:08:22,640 --> 02:08:28,620
+bigger droplet now we can go ahead and power cycle that bad boy back on let's go into our networking
+
+1020
+02:08:28,620 --> 02:08:34,380
+let's come down to our firewall and create a firewall now the firewall is just going to be test
+
+1021
+02:08:34,380 --> 02:08:40,360
+firewall and what we'll do is we'll have an inbound of ssh we're also going to allow
+
+1022
+02:08:44,120 --> 02:08:53,580
+a custom one and we're going to allow for seven three five one so we'll copy that bad boy and we'll
+
+1023
+02:08:53,580 --> 02:09:01,480
+go ahead and paste it like that and then we'll do the same thing for seven three five zero as well
+
+1024
+02:09:01,480 --> 02:09:08,200
+and then we're going to allow another one which is going to be seven three five one udp and seven
+
+1025
+02:09:08,200 --> 02:09:14,460
+three five zero udp that way we can have all of our stuff all of our ducks in a row and everything
+
+1026
+02:09:14,460 --> 02:09:19,880
+kind of covered now you can see here all outbound is good and we should be good to go so we'll go
+
+1027
+02:09:19,880 --> 02:09:26,140
+ahead and hit create firewall and that should create that firewall onto that networking system so we
+
+1028
+02:09:26,140 --> 02:09:35,940
+go to our droplet and we go to youtube 2 you should see right here under our firewall networking no
+
+1029
+02:09:35,940 --> 02:09:42,480
+firewalls are applied to this droplet so i need to apply this firewall so let's see if we need
+
+1030
+02:09:42,480 --> 02:09:50,440
+droplets we can choose our droplet add droplet and then we will search for youtube 2 and we'll go
+
+1031
+02:09:50,440 --> 02:09:56,800
+ahead and connect it to that droplet so now that should give our droplet the firewall it needs to do
+
+1032
+02:09:56,800 --> 02:10:02,180
+its job so now we should be able to go to console and fire that up and then hit
+
+1033
+02:10:04,940 --> 02:10:12,460
+cd nakama and then docker compose up and in theory it should run a lot faster which it is you can
+
+1034
+02:10:12,460 --> 02:10:18,740
+see it's actually firing off just well the init node was successfully done cockroach database is up
+
+1035
+02:10:18,740 --> 02:10:24,140
+so now we're starting to get the proper logs that we expect so my guess is it had something to do
+
+1036
+02:10:24,140 --> 02:10:31,400
+with the lack of ram that we had so let's try that we'll refresh and there we go so you can see now
+
+1037
+02:10:31,400 --> 02:10:41,160
+we have nakama running out on our website which is one nine eight nine one nine nine eighty one one
+
+1038
+02:10:41,160 --> 02:10:48,820
+eight and you guys of course can go to this and use it so if you type admin password you can see we
+
+1039
+02:10:48,820 --> 02:10:55,420
+have our nakama instance just like before and it's exactly the same so you guys can actually use
+
+1040
+02:10:55,420 --> 02:11:01,400
+this for your own project providing that it doesn't get shut down immediately because for some
+
+1041
+02:11:01,400 --> 02:11:09,200
+reason it gets shut down sometimes and that causes some issues but that's how easy it is to get this
+
+1042
+02:11:09,200 --> 02:11:15,900
+to fire off now and in order to detach let's hit ctrl c we'll stop our docker connection right here
+
+1043
+02:11:16,600 --> 02:11:21,180
+and you'll see in a second it's going to gracefully stop so we'll give it a minute to kill
+
+1044
+02:11:21,180 --> 02:11:31,400
+everything we'll hit docker compose up dash dash detach what that should do is it should allow us to
+
+1045
+02:11:31,400 --> 02:11:37,980
+fire this up and be detached and there you go so now we're detached so if we hit ps you'll see that
+
+1046
+02:11:37,980 --> 02:11:44,020
+it's not running but if i come in here and i refresh you can see that nakama is running if i close
+
+1047
+02:11:44,020 --> 02:11:50,800
+this and i refresh you will see that nakama is running even though we are no longer connected to our
+
+1048
+02:11:50,800 --> 02:11:58,660
+docker instance so that's how we can actually get that to run without needing to keep that window
+
+1049
+02:11:58,660 --> 02:12:03,780
+open because if you were to have closed the window when nakama's running like that previously
+
+1050
+02:12:03,780 --> 02:12:09,620
+without running the dash dash detach then it would have closed that docker instance and then your
+
+1051
+02:12:09,620 --> 02:12:16,540
+whole project would have been gone so that's basically how that works so now if we head out to godot
+
+1052
+02:12:16,540 --> 02:12:24,900
+here we can come up to here and change this value to our nakama instance so if we come in here you
+
+1053
+02:12:24,900 --> 02:12:31,660
+can see here is our nakama instance right here so we'll copy that we'll paste this like so and then
+
+1054
+02:12:31,660 --> 02:12:43,640
+if we hit play you will see that we can now submit and log in so you'll see that i have logged in so
+
+1055
+02:12:43,640 --> 02:12:50,320
+now if i take a look at my nakama instance out here on the web if i refresh you'll see that when we
+
+1056
+02:12:50,320 --> 02:12:58,080
+go to accounts i have an account right here just like as if i was playing the game locally so this
+
+1057
+02:12:58,080 --> 02:13:05,240
+is how that works and you can come in here and go test two and you'll see that if i click name of
+
+1058
+02:13:05,240 --> 02:13:14,520
+match test join create test join create we just joined our match and then if the host says start
+
+1059
+02:13:14,520 --> 02:13:21,040
+game and then start game you'll see that we both started our game now something here is broken but i
+
+1060
+02:13:21,040 --> 02:13:27,680
+don't think that that's a nakama issue i think that's just a my code issue so you can see that we
+
+1061
+02:13:27,680 --> 02:13:34,760
+are transferring the data as expected here in our nakama instance so we do have the presences as
+
+1062
+02:13:34,760 --> 02:13:42,780
+expected but i feel like something here is wonky a little bit and i think that's because i'm not in
+
+1063
+02:13:42,780 --> 02:13:49,240
+the right scene to do this i think i have to go to game manager.tscn if you remember this is our
+
+1064
+02:13:49,240 --> 02:13:58,420
+game manager here so let's refresh this guy let's try rerunning it so we'll hit test test to test
+
+1065
+02:13:58,420 --> 02:14:07,560
+join create test join create start game start game and you can see that our game is now running not
+
+1066
+02:14:07,560 --> 02:14:13,500
+locally anymore so this will work with your friends across the web and what i'm going to do is i'm
+
+1067
+02:14:13,500 --> 02:14:19,780
+going to go get one of my friends and i will have him pull my code and then he will also do this and
+
+1068
+02:14:19,780 --> 02:14:27,140
+i'll show you guys that it does work out on the internet so i will be right back okay and then hit
+
+1069
+02:14:27,140 --> 02:14:35,920
+start game and as you guys can see right here my friend and i are both working together and playing
+
+1070
+02:14:35,920 --> 02:14:42,840
+the same game at the same time over the internet using our nakama instance now you can see here that
+
+1071
+02:14:42,840 --> 02:14:48,320
+there is a little bit of lag and i think the reason for that is because we're flooding the actual
+
+1072
+02:14:48,320 --> 02:14:55,640
+nakama instance because it has a bunch of data that it's passing through so we should probably
+
+1073
+02:14:55,640 --> 02:15:02,520
+figure out a better way to optimize this but at least we have it working for now so at this point
+
+1074
+02:15:02,520 --> 02:15:08,400
+we've gone through quite a few things we talked about groups we talked about chatting and we talked
+
+1075
+02:15:08,400 --> 02:15:16,020
+about how to get our stuff to work out on the internet for our project and allow us to work on
+
+1076
+02:15:16,020 --> 02:15:20,780
+multiple networks with each other so if you like this video go and hit that like button hey you know
+
+1077
+02:15:20,780 --> 02:15:24,740
+if you dislike this video go and hit that dislike button because i am here to make content for you
+
+1078
+02:15:24,740 --> 02:15:29,020
+guys this video was a viewer suggested video so if you have any suggestions please leave them in the
+
+1079
+02:15:29,020 --> 02:15:34,240
+comments below or jump on my github link is in the description and put in a service ticket and i'll
+
+1080
+02:15:34,240 --> 02:15:38,060
+be more than happy to add it to my list of tutorials for the future and hey if you have any
+
+1081
+02:15:38,060 --> 02:15:42,560
+questions or comments about this video go ahead and leave them in the comments below or jump on my
+
+1082
+02:15:42,560 --> 02:15:47,800
+discord link is in the description and i'll be more than happy to help you out but that is all i
+
+1083
+02:15:47,800 --> 02:15:53,380
+have for you guys today so thank you so much again for watching and i will see you all next time
+
+1084
+02:15:53,380 --> 02:15:57,280
+thanks your so
+
+1085
+02:16:13,720 --> 02:16:15,420
+you Thank you.
+
